@@ -9,7 +9,7 @@
 - **Date Handling**: date-fns (lightweight, reliable)
 - **Animations**: framer-motion (optional, for enhanced UX)
 - **Build Tool**: Vite
-- **No External UI Libraries**: Pure React + SCSS implementation
+- **UI Libraries**: Use React-bits https://reactbits.dev/ – use context mcp for documentation
 
 ### Data Layer
 - **Data Source**: Static JSON file (`pizza-data.json`)
@@ -21,7 +21,7 @@
 ### Component Structure
 ```
 App
-├── Header (Logo, Title)
+├── Header (Title)
 ├── TurnIndicator (Whose turn today)
 ├── StatsPanel (Cost per pizza, savings, progress)
 ├── OrderHistory (Timeline of orders)
