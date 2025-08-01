@@ -8,9 +8,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
 
-// Global App Styles - Simple Dark Theme
+// Global App Styles - TMNT Brick Wall Theme
 body {
-  background: #000000;
+  background: url('/sprites/brick-wall-background.png') repeat;
+  background-size: 512px 512px;
   min-height: 100vh;
   font-family: $font-body;
   color: $text-hero;
@@ -73,6 +74,18 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: $text-secondary;
+  
+  .footer-link {
+    color: $turtle-green;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all $transition-normal;
+    
+    &:hover {
+      color: $slime-lime;
+      text-shadow: 0 0 10px $slime-lime;
+    }
+  }
 }
 
 // Custom Scrollbar

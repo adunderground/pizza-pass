@@ -2,22 +2,10 @@
 @use '../../styles/mixins' as *;
 
 .order-history {
-  background: linear-gradient(135deg, $bg-card 0%, $bg-highlight 100%);
+  background: #000000;
   padding: $spacing-2xl 0;
   position: relative;
   overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, $turtle-green, $pizza-orange, $sewer-purple);
-    opacity: 0.05;
-    z-index: 0;
-  }
   
   .container {
     max-width: 1200px;
@@ -49,7 +37,7 @@
       flex-wrap: wrap;
       
       .filter-btn {
-        background: linear-gradient(135deg, $bg-card 0%, $bg-highlight 100%);
+        background: #111111;
         border: none;
         border-radius: $border-radius-lg;
         padding: $spacing-md $spacing-lg;
@@ -63,18 +51,6 @@
         transition: all $transition-normal;
         position: relative;
         overflow: hidden;
-        
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(45deg, $turtle-green, $pizza-orange, $sewer-purple);
-          opacity: 0.1;
-          z-index: 0;
-        }
         
         span {
           position: relative;
@@ -91,10 +67,6 @@
           background: linear-gradient(135deg, $turtle-green 0%, $slime-lime 100%);
           color: $bg-sewer;
           font-weight: 700;
-          
-          &::before {
-            opacity: 0;
-          }
         }
       }
     }
@@ -134,25 +106,18 @@
     display: grid;
     gap: $spacing-lg;
     
-    .order-card {
-      background: linear-gradient(135deg, $bg-card 0%, $bg-highlight 100%);
-      border-radius: $border-radius-xl;
-      padding: $spacing-xl;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, $turtle-green, $pizza-orange, $sewer-purple);
-        opacity: 0.1;
-        z-index: 0;
-      }
+                  .order-card {
+                background: #111111;
+                border-radius: $border-radius-xl;
+                padding: $spacing-xl;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+                border: 2px solid transparent;
+                background-image: url('/sprites/sewer-grate-border.png');
+                background-size: 16px 16px;
+                background-repeat: repeat-x;
+                background-position: top;
       
       &.archie {
         .person-avatar {
@@ -212,30 +177,9 @@
             font-size: $font-size-base;
             font-weight: 500;
             color: $text-secondary;
-            margin: 0 0 $spacing-sm 0;
+            margin: 0;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-          }
-          
-          .status-badge {
-            display: inline-block;
-            padding: $spacing-xs $spacing-sm;
-            border-radius: $border-radius-md;
-            font-family: $font-secondary;
-            font-size: $font-size-xs;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            
-            &.correct {
-              background: $slime-lime;
-              color: $bg-sewer;
-            }
-            
-            &.incorrect {
-              background: $comic-red;
-              color: $text-hero;
-            }
           }
         }
       }

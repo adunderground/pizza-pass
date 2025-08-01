@@ -13,7 +13,17 @@ function App() {
           <OrderHistory />
         </main>
         <footer className="footer">
-          <p>&PizzaPass 🍕</p>
+          <p>
+            Cowabunga'd with 🍕 by{' '}
+            <a 
+              href="https://github.com/adunderground" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="footer-link"
+            >
+              ad_underground
+            </a>
+          </p>
         </footer>
       </div>
     </div>

@@ -35,7 +35,9 @@ const StatsPanel = () => {
         
         <div className="stats-grid grid grid-cols-2">
           <div className="stat-card hover-glow">
-            <div className="stat-icon">🍕</div>
+            <div className="stat-icon">
+              <img src="/sprites/pizza-box-icon.png" alt="Pizza Box" className="stat-sprite" />
+            </div>
             <div className="stat-content">
               <div className="stat-value retro-number">{pizzasOrdered}</div>
               <div className="stat-label">Pizzas Ordered</div>
@@ -43,7 +45,9 @@ const StatsPanel = () => {
           </div>
           
           <div className="stat-card hover-glow">
-            <div className="stat-icon">💰</div>
+            <div className="stat-icon">
+              <img src="/sprites/shredder-helmet-icon.png" alt="Shredder's Helmet" className="stat-sprite" />
+            </div>
             <div className="stat-content">
               <div className="stat-value retro-number">${costPerPizza.toFixed(2)}</div>
               <div className="stat-label">Cost Per Pizza</div>
@@ -51,7 +55,9 @@ const StatsPanel = () => {
           </div>
           
           <div className="stat-card hover-glow">
-            <div className="stat-icon">💸</div>
+            <div className="stat-icon">
+              <img src="/sprites/krang-brain-icon.png" alt="Krang's Brain" className="stat-sprite" />
+            </div>
             <div className="stat-content">
               <div className="stat-value retro-number">${totalSavings.toFixed(2)}</div>
               <div className="stat-label">Total Savings</div>
@@ -59,7 +65,9 @@ const StatsPanel = () => {
           </div>
           
           <div className="stat-card hover-glow">
-            <div className="stat-icon">📊</div>
+            <div className="stat-icon">
+              <img src="/sprites/april-camera-icon.png" alt="April's Camera" className="stat-sprite" />
+            </div>
             <div className="stat-content">
               <div className="stat-value retro-number">{Math.round(passProgress)}%</div>
               <div className="stat-label">Pass Progress</div>

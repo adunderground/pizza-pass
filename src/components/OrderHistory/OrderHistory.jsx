@@ -29,12 +29,9 @@ const OrderHistory = () => {
     return person === 'Archie' ? '🐢' : '🥷';
   };
 
-  const getStatusBadge = (order) => {
-    if (order.isCorrectTurn) {
-      return <span className="status-badge correct">✅ Correct Turn</span>;
-    } else {
-      return <span className="status-badge incorrect">❌ Wrong Turn</span>;
-    }
+  const formatLocation = (location) => {
+    // Remove zip codes (5-digit numbers at the end of addresses)
+    return location.replace(/\s+\d{5}(-\d{4})?$/, '');
   };
 
   const toggleExpanded = (orderNumber) => {
@@ -93,13 +90,12 @@ const OrderHistory = () => {
                   <div className="order-info">
                     <h3 className="person-name">{order.actualPerson}</h3>
                     <p className="order-date">{order.order_date}</p>
-                    {getStatusBadge(order)}
                   </div>
                 </div>
                 
                 <div className="pizza-info">
                   <h4 className="pizza-name">{order.pizza_name}</h4>
-                  <p className="pizza-location">{order.location}</p>
+                  <p className="pizza-location">{formatLocation(order.location)}</p>
                 </div>
 
                 {expandedOrder === order.order_number && (

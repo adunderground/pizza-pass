@@ -21,10 +21,10 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <div className="header-content">
-          <div className="logo">
-            <span className="logo-icon">🍕</span>
-            <h1 className="hero-text">&PizzaPass</h1>
-          </div>
+                              <div className="logo">
+                      <h1 className="hero-text">&PizzaPass</h1>
+                      <img src="/sprites/pizza-cutter-icon.png" alt="Pizza Cutter" className="header-decoration" />
+                    </div>
           <div className="day-counter">
             <span className="day-text">Day {passDay} of 30</span>
           </div>

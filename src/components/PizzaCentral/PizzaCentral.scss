@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: $spacing-3xl;
-  align-items: center;
+  align-items: flex-start; // Changed from center to flex-start to move avatars higher
   margin-bottom: $spacing-3xl;
   
   .left-circle,
@@ -13,6 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -$spacing-xl; // Move avatars higher vertically
   }
   
   .person-circle {
@@ -32,8 +33,18 @@
       border: 3px solid $turtle-green;
       
       &.active {
-        box-shadow: 0 0 30px $turtle-green;
+        box-shadow: 0 0 50px $turtle-green, 0 0 100px rgba(0, 166, 81, 0.5);
         transform: scale(1.1);
+        
+        &:hover {
+          box-shadow: 0 0 80px $turtle-green, 0 0 150px rgba(0, 166, 81, 0.7);
+          transform: scale(1.15);
+        }
+      }
+      
+      &:hover {
+        box-shadow: 0 0 30px $turtle-green;
+        transform: scale(1.05);
       }
     }
     
@@ -42,8 +53,18 @@
       border: 3px solid $pizza-orange;
       
       &.active {
-        box-shadow: 0 0 30px $pizza-orange;
+        box-shadow: 0 0 50px $pizza-orange, 0 0 100px rgba(255, 107, 53, 0.5);
         transform: scale(1.1);
+        
+        &:hover {
+          box-shadow: 0 0 80px $pizza-orange, 0 0 150px rgba(255, 107, 53, 0.7);
+          transform: scale(1.15);
+        }
+      }
+      
+      &:hover {
+        box-shadow: 0 0 30px $pizza-orange;
+        transform: scale(1.05);
       }
     }
     
@@ -60,6 +81,33 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
+    
+    .ninja-star {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      filter: drop-shadow(0 0 8px $neon-yellow);
+      animation: spin 2s linear infinite;
+    }
+    
+    .turn-indicator {
+      font-family: $font-primary;
+      font-size: $font-size-xs;
+      font-weight: 700;
+      color: #000000;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      line-height: 1.2;
+      margin-top: $spacing-sm;
+      background: $neon-yellow;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius-sm;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      box-shadow: 0 0 10px $neon-yellow;
+    }
   }
   
   .center-section {
@@ -70,8 +118,102 @@
     
     .pizza-slice-container {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
+      
+      .pizza-slice {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        
+        .pizza-sprite {
+          width: 100%;
+          height: auto;
+          max-width: 400px;
+          filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5));
+          z-index: 1;
+          position: relative;
+          transition: all $transition-normal;
+          
+          &:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(6px 6px 12px rgba(0,0,0,0.7));
+          }
+        }
+        
+        .progress-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-radius: $border-radius-full;
+          overflow: hidden;
+          z-index: 2;
+          
+          .progress-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, $turtle-green 0%, $slime-lime 100%);
+            transition: height 0.5s ease-in-out;
+            height: 0%; // Will be set dynamically
+          }
+        }
+      }
+    }
+    
+    .stats-group {
+      width: 100%;
+      max-width: 510px; // 15% smaller than 600px
+      transform: scale(0.85);
+      transform-origin: center;
+    }
+  }
+}
+
+// Mobile Layout
+.pizza-central-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+  
+  .mobile-turn-indicator {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    
+    .turn-text {
+      font-family: $font-primary;
+      font-size: $font-size-xl;
+      font-weight: 800;
+      color: $neon-yellow;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 15px $neon-yellow;
+      background: rgba(0,0,0,0.8);
+      padding: $spacing-sm $spacing-lg;
+      border-radius: $border-radius-lg;
+      border: 2px solid $neon-yellow;
+    }
+  }
+  
+  .center-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xl;
+    width: 100%;
+    
+    .pizza-slice-container {
+      position: relative;
+      width: 250px;
+      height: 250px;
       
       .pizza-slice {
         width: 100%;
@@ -82,7 +224,7 @@
         position: relative;
         
         .pizza-emoji {
-          font-size: 15rem;
+          font-size: 13rem;
           filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5));
           z-index: 1;
           position: relative;
@@ -113,7 +255,8 @@
     
     .stats-group {
       width: 100%;
-      max-width: 600px;
+      max-width: 100%;
+      transform: scale(0.9);
     }
   }
 }
@@ -123,6 +266,11 @@
   .pizza-central-layout {
     grid-template-columns: 1fr;
     gap: $spacing-xl;
+    
+    .left-circle,
+    .right-circle {
+      margin-top: -$spacing-lg; // Smaller negative margin on mobile
+    }
     
     .person-circle {
       width: 150px;
@@ -135,16 +283,26 @@
       .person-name {
         font-size: $font-size-base;
       }
+      
+      .turn-indicator {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.4rem;
+      }
     }
     
     .center-section {
       .pizza-slice-container {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
         
         .pizza-emoji {
-          font-size: 10rem;
+          font-size: 13rem;
         }
+      }
+      
+      .stats-group {
+        max-width: 100%;
+        transform: scale(0.9);
       }
     }
   }
