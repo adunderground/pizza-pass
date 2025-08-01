@@ -1,294 +1,373 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
-@use 'sass:color';
 
 .order-history {
-  margin: $spacing-3xl 0;
+  background: linear-gradient(135deg, $bg-card 0%, $bg-highlight 100%);
+  padding: $spacing-2xl 0;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, $turtle-green, $pizza-orange, $sewer-purple);
+    opacity: 0.05;
+    z-index: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    position: relative;
+    z-index: 1;
+  }
   
   .history-header {
-    @include flex-between;
-    margin-bottom: $spacing-3xl;
+    margin-bottom: $spacing-2xl;
     
-    @include mobile {
-      @include flex-column;
-      gap: $spacing-2xl;
+    .comic-header {
+      font-family: $font-primary;
+      font-size: $font-size-3xl;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+      color: $text-hero;
+      margin-bottom: $spacing-xl;
       text-align: center;
     }
     
-    h2 {
-      @include heading-secondary;
-      margin: 0;
-      font-size: $font-size-4xl;
-      font-weight: 900;
-      color: $text-primary;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-    }
-    
-    .filter-controls {
-      @include flex-center;
-      gap: $spacing-lg;
-      
-      @include mobile {
-        flex-wrap: wrap;
-      }
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: $spacing-md;
+      flex-wrap: wrap;
       
       .filter-btn {
-        background: $surface-color;
-        color: $text-secondary;
-        border: 2px solid $primary-color;
-        border-radius: $border-radius-md;
-        padding: $spacing-md $spacing-xl;
+        background: linear-gradient(135deg, $bg-card 0%, $bg-highlight 100%);
+        border: none;
+        border-radius: $border-radius-lg;
+        padding: $spacing-md $spacing-lg;
         font-family: $font-primary;
-        font-weight: 700;
+        font-weight: 600;
         font-size: $font-size-base;
-        cursor: pointer;
-        transition: $transition-normal;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.05em;
+        color: $text-secondary;
+        cursor: pointer;
+        transition: all $transition-normal;
+        position: relative;
+        overflow: hidden;
         
-        &.active {
-          background: $primary-color;
-          color: $background-dark;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(45deg, $turtle-green, $pizza-orange, $sewer-purple);
+          opacity: 0.1;
+          z-index: 0;
+        }
+        
+        span {
+          position: relative;
+          z-index: 1;
         }
         
         &:hover {
-          background: $primary-color;
-          color: $background-dark;
           transform: translateY(-2px);
+          box-shadow: $shadow-neon;
+          color: $text-hero;
+        }
+        
+        &.active {
+          background: linear-gradient(135deg, $turtle-green 0%, $slime-lime 100%);
+          color: $bg-sewer;
+          font-weight: 700;
+          
+          &::before {
+            opacity: 0;
+          }
         }
       }
     }
   }
   
-  .orders-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-2xl;
+  .no-orders {
+    text-align: center;
+    padding: $spacing-3xl;
     
-    .no-orders {
-      background: $surface-color;
-      border: 2px solid $text-muted;
-      border-radius: $border-radius-lg;
-      text-align: center;
-      padding: $spacing-3xl;
+    .no-orders-content {
+      .no-orders-icon {
+        font-size: 4rem;
+        margin-bottom: $spacing-lg;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      }
       
-      p {
-        @include body-text;
+      h3 {
+        font-family: $font-primary;
         font-size: $font-size-2xl;
-        font-weight: 600;
-        margin: 0;
-        color: $text-secondary;
+        font-weight: 700;
+        color: $text-hero;
+        margin-bottom: $spacing-md;
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
+      
+      p {
+        font-family: $font-body;
+        font-size: $font-size-lg;
+        color: $text-secondary;
+        margin: 0;
+      }
     }
+  }
+  
+  .orders-grid {
+    display: grid;
+    gap: $spacing-lg;
     
     .order-card {
-      background: $surface-color;
-      border: 3px solid transparent;
-      border-radius: $border-radius-lg;
-      padding: $spacing-2xl;
+      background: linear-gradient(135deg, $bg-card 0%, $bg-highlight 100%);
+      border-radius: $border-radius-xl;
+      padding: $spacing-xl;
+      cursor: pointer;
       position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, $turtle-green, $pizza-orange, $sewer-purple);
+        opacity: 0.1;
+        z-index: 0;
+      }
       
       &.archie {
-        border-color: $primary-color;
-        
-        .person-icon {
-          background: $primary-color;
-          color: $background-dark;
+        .person-avatar {
+          background: radial-gradient(circle, $turtle-green 0%, $slime-lime 100%);
         }
       }
       
       &.charles {
-        border-color: $secondary-color;
-        
-        .person-icon {
-          background: $secondary-color;
-          color: $background-dark;
+        .person-avatar {
+          background: radial-gradient(circle, $pizza-orange 0%, $comic-red 100%);
         }
-      }
-      
-      &.correct {
-        border-color: $success-color;
-      }
-      
-      &.incorrect {
-        border-color: $error-color;
       }
       
       .order-header {
-        @include flex-between;
-        margin-bottom: $spacing-xl;
+        display: flex;
+        align-items: center;
+        gap: $spacing-lg;
+        margin-bottom: $spacing-lg;
+        position: relative;
+        z-index: 1;
         
-        @include mobile {
-          @include flex-column;
-          gap: $spacing-lg;
-          align-items: flex-start;
-        }
-        
-        .order-person {
-          @include flex-center;
-          gap: $spacing-lg;
+        .person-avatar {
+          width: 60px;
+          height: 60px;
+          border-radius: $border-radius-full;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all $transition-normal;
           
-          .person-icon {
-            @include flex-center;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            font-size: $font-size-3xl;
-            font-weight: 900;
-            flex-shrink: 0;
+          &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 166, 81, 0.5);
           }
           
-          .person-info {
-            .person-name {
-              @include heading-secondary;
-              font-size: $font-size-2xl;
-              font-weight: 900;
-              margin: 0 0 $spacing-sm 0;
-              color: $text-primary;
-              text-transform: uppercase;
-              letter-spacing: -0.02em;
-            }
-            
-            .order-date {
-              @include caption-text;
-              margin: 0;
-              font-size: $font-size-lg;
-              font-weight: 600;
-              color: $text-secondary;
-              text-transform: uppercase;
-              letter-spacing: 0.1em;
-            }
+          .avatar-emoji {
+            font-size: 2rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
           }
         }
         
-        .order-status {
-          .status-badge {
-            @include body-text;
-            padding: $spacing-md $spacing-lg;
-            border-radius: $border-radius-sm;
-            font-size: $font-size-sm;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            
-            &.correct {
-              background: $success-color;
-              color: $background-dark;
-            }
-            
-            &.incorrect {
-              background: $error-color;
-              color: $background-dark;
-            }
-            
-            &.unknown {
-              background: $text-muted;
-              color: $background-dark;
-            }
-          }
-        }
-      }
-      
-      .order-details {
-        .pizza-info {
-          margin-bottom: $spacing-xl;
+        .order-info {
+          flex: 1;
           
-          .pizza-name {
-            @include heading-secondary;
+          .person-name {
+            font-family: $font-primary;
             font-size: $font-size-xl;
             font-weight: 700;
-            margin: 0 0 $spacing-md 0;
-            color: $primary-color;
+            color: $text-hero;
+            margin: 0 0 $spacing-sm 0;
             text-transform: uppercase;
             letter-spacing: 0.05em;
           }
           
-          .pizza-ingredients {
-            @include body-text;
+          .order-date {
+            font-family: $font-body;
             font-size: $font-size-base;
-            font-weight: 600;
-            margin: 0;
+            font-weight: 500;
             color: $text-secondary;
-            line-height: 1.6;
+            margin: 0 0 $spacing-sm 0;
             text-transform: uppercase;
-            letter-spacing: 0.02em;
-          }
-        }
-        
-        .order-meta {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: $spacing-lg;
-          
-          @include mobile {
-            grid-template-columns: 1fr;
+            letter-spacing: 0.05em;
           }
           
-          .meta-item {
-            @include flex-between;
+          .status-badge {
+            display: inline-block;
+            padding: $spacing-xs $spacing-sm;
+            border-radius: $border-radius-md;
+            font-family: $font-secondary;
+            font-size: $font-size-xs;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             
-            .meta-label {
-              @include caption-text;
-              font-weight: 700;
-              font-size: $font-size-base;
-              color: $text-secondary;
-              text-transform: uppercase;
-              letter-spacing: 0.1em;
+            &.correct {
+              background: $slime-lime;
+              color: $bg-sewer;
             }
             
-            .meta-value {
-              @include body-text;
-              font-size: $font-size-base;
-              font-weight: 600;
-              color: $text-primary;
+            &.incorrect {
+              background: $comic-red;
+              color: $text-hero;
+            }
+          }
+        }
+      }
+      
+      .pizza-info {
+        position: relative;
+        z-index: 1;
+        
+        .pizza-name {
+          font-family: $font-primary;
+          font-size: $font-size-lg;
+          font-weight: 700;
+          color: $text-hero;
+          margin: 0 0 $spacing-sm 0;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+        
+        .pizza-location {
+          font-family: $font-body;
+          font-size: $font-size-sm;
+          font-weight: 500;
+          color: $text-secondary;
+          margin: 0;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+      }
+      
+      .order-details {
+        margin-top: $spacing-lg;
+        padding-top: $spacing-lg;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        position: relative;
+        z-index: 1;
+        
+        .ingredients-section {
+          margin-bottom: $spacing-lg;
+          
+          h5 {
+            font-family: $font-primary;
+            font-size: $font-size-base;
+            font-weight: 600;
+            color: $text-hero;
+            margin: 0 0 $spacing-sm 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+          
+          .ingredients-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: $spacing-xs;
+            
+            li {
+              background: $bg-grime;
+              color: $text-secondary;
+              padding: $spacing-xs $spacing-sm;
+              border-radius: $border-radius-sm;
+              font-family: $font-body;
+              font-size: $font-size-xs;
+              font-weight: 500;
               text-transform: uppercase;
               letter-spacing: 0.05em;
             }
           }
         }
+        
+        .meta-info {
+          display: flex;
+          justify-content: space-between;
+          gap: $spacing-md;
+          
+          span {
+            font-family: $font-secondary;
+            font-size: $font-size-xs;
+            font-weight: 500;
+            color: $text-secondary;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+        }
       }
     }
   }
-  
-  .history-summary {
-    margin-top: $spacing-3xl;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .order-history {
+    padding: $spacing-xl 0;
     
-    .summary-stats {
-      background: $surface-color;
-      border: 3px solid $primary-color;
-      border-radius: $border-radius-lg;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: $spacing-2xl;
-      padding: $spacing-2xl;
-      
-      @include mobile {
-        grid-template-columns: 1fr;
-        gap: $spacing-xl;
-      }
-      
-      .summary-item {
-        @include flex-between;
+    .history-header {
+      .filter-buttons {
+        flex-direction: column;
+        align-items: center;
         
-        .summary-label {
-          @include body-text;
-          font-weight: 700;
-          font-size: $font-size-lg;
-          color: $text-secondary;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
+        .filter-btn {
+          width: 100%;
+          max-width: 200px;
+        }
+      }
+    }
+    
+    .orders-grid {
+      .order-card {
+        padding: $spacing-lg;
+        
+        .order-header {
+          flex-direction: column;
+          text-align: center;
+          gap: $spacing-md;
+          
+          .person-avatar {
+            width: 80px;
+            height: 80px;
+            
+            .avatar-emoji {
+              font-size: 2.5rem;
+            }
+          }
         }
         
-        .summary-value {
-          @include heading-secondary;
-          color: $primary-color;
-          font-weight: 900;
-          font-size: $font-size-xl;
-          text-transform: uppercase;
-          letter-spacing: -0.02em;
+        .order-details {
+          .meta-info {
+            flex-direction: column;
+            gap: $spacing-sm;
+            text-align: center;
+          }
         }
       }
     }

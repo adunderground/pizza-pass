@@ -2,156 +2,121 @@
 @use '../../styles/mixins' as *;
 
 .stats-panel {
-  margin: $spacing-3xl 0;
+  background: #000000;
+  padding: $spacing-xl 0;
+  position: relative;
   
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: $spacing-2xl;
-    margin-bottom: $spacing-3xl;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    position: relative;
+  }
+  
+  .stats-header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
     
-    @include mobile {
-      grid-template-columns: 1fr;
-      gap: $spacing-xl;
+    .comic-header {
+      font-family: $font-primary;
+      font-size: $font-size-2xl;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+      color: $text-hero;
+      margin: 0;
     }
   }
   
-  .stat-card {
-    background: $surface-color;
-    border: 3px solid $primary-color;
-    border-radius: $border-radius-lg;
-    @include flex-center;
-    gap: $spacing-xl;
-    padding: $spacing-3xl;
-    position: relative;
-    overflow: hidden;
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
     
-    &.pizzas-ordered {
-      border-color: $primary-color;
-    }
-    
-    &.cost-per-pizza {
-      border-color: $secondary-color;
-    }
-    
-    &.total-savings {
-      border-color: $accent-color;
-    }
-    
-    &.pass-progress {
-      border-color: $success-color;
-    }
-    
-    @include fade-in;
-    
-    .stat-icon {
-      font-size: $font-size-5xl;
-      flex-shrink: 0;
-      
-      @include mobile {
-        font-size: $font-size-4xl;
-      }
-    }
-    
-    .stat-content {
-      flex: 1;
+    .stat-card {
+      background: #111111;
+      border-radius: $border-radius-lg;
+      padding: $spacing-lg;
       text-align: center;
+      position: relative;
+      border: 1px solid $turtle-green;
       
-      .stat-value {
-        @include heading-primary;
-        font-size: $font-size-5xl;
-        font-weight: 900;
-        margin: 0 0 $spacing-md 0;
-        color: $text-primary;
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
+      .stat-icon {
+        font-size: 2rem;
+        margin-bottom: $spacing-md;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      }
+      
+      .stat-content {
+        .stat-value {
+          font-family: $font-secondary;
+          font-size: $font-size-2xl;
+          font-weight: 700;
+          color: $neon-yellow;
+          text-shadow: 0 0 10px $neon-yellow;
+          margin-bottom: $spacing-sm;
+        }
         
-        @include mobile {
-          font-size: $font-size-4xl;
+        .stat-label {
+          font-family: $font-primary;
+          font-size: $font-size-sm;
+          font-weight: 600;
+          color: $text-secondary;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
         }
       }
+    }
+  }
+  
+  .progress-section {
+    background: #111111;
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+    position: relative;
+    border: 1px solid $turtle-green;
+    
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-md;
       
-      .stat-label {
-        @include heading-secondary;
-        font-size: $font-size-xl;
-        font-weight: 700;
-        margin: 0 0 $spacing-md 0;
-        color: $text-primary;
+      .comic-header {
+        font-family: $font-primary;
+        font-size: $font-size-lg;
+        font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.05em;
+        text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+        color: $text-hero;
+        margin: 0;
       }
       
-      .stat-subtitle {
-        @include caption-text;
-        margin: 0;
-        font-size: $font-size-lg;
+      .progress-text {
+        font-family: $font-secondary;
+        font-size: $font-size-base;
         font-weight: 600;
-        color: $text-secondary;
+        color: $text-accent;
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
     }
     
-    &:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba($primary-color, 0.3);
-    }
-  }
-  
-  .progress-section {
-    background: $surface-color;
-    border: 3px solid $primary-color;
-    border-radius: $border-radius-lg;
-    padding: $spacing-3xl;
-    
-    .progress-header {
-      @include flex-between;
-      margin-bottom: $spacing-2xl;
-      
-      @include mobile {
-        @include flex-column;
-        gap: $spacing-lg;
-        text-align: center;
-      }
-      
-      h3 {
-        @include heading-secondary;
-        margin: 0;
-        font-size: $font-size-3xl;
-        font-weight: 900;
-        color: $text-primary;
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
-      }
-      
-      .progress-text {
-        @include body-text;
-        background: $primary-color;
-        color: $background-dark;
-        padding: $spacing-md $spacing-lg;
-        border-radius: $border-radius-md;
-        font-weight: 900;
-        font-size: $font-size-lg;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
-    }
-    
     .progress-bar {
-      width: 100%;
-      height: 20px;
-      background: $background-dark;
-      border: 2px solid $primary-color;
+      height: 15px;
+      background: #222222;
       border-radius: $border-radius-lg;
       overflow: hidden;
-      margin-bottom: $spacing-xl;
-      position: relative;
+      margin-bottom: $spacing-md;
       
       .progress-fill {
         height: 100%;
-        background: $primary-color;
+        background: linear-gradient(90deg, $turtle-green 0%, $slime-lime 100%);
         border-radius: $border-radius-lg;
-        transition: width 1s ease-out;
+        transition: width 0.5s ease-in-out;
         position: relative;
         
         &::after {
@@ -161,25 +126,20 @@
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-          animation: shimmer 2s infinite;
+          background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+          animation: animate-spin 2s linear infinite;
         }
       }
     }
     
     .progress-details {
-      @include flex-between;
-      
-      @include mobile {
-        @include flex-column;
-        gap: $spacing-lg;
-        text-align: center;
-      }
+      display: flex;
+      justify-content: space-between;
       
       span {
-        @include body-text;
-        font-size: $font-size-lg;
-        font-weight: 600;
+        font-family: $font-body;
+        font-size: $font-size-xs;
+        font-weight: 500;
         color: $text-secondary;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -188,11 +148,48 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
+// Responsive adjustments
+@media (max-width: 768px) {
+  .stats-panel {
+    padding: $spacing-lg 0;
+    
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+      
+      .stat-card {
+        padding: $spacing-md;
+        
+        .stat-icon {
+          font-size: 1.5rem;
+        }
+        
+        .stat-content {
+          .stat-value {
+            font-size: $font-size-xl;
+          }
+        }
+      }
+    }
+    
+    .progress-section {
+      padding: $spacing-md;
+      
+      .progress-header {
+        flex-direction: column;
+        gap: $spacing-sm;
+        text-align: center;
+        
+        .comic-header {
+          font-size: $font-size-base;
+        }
+      }
+      
+      .progress-details {
+        flex-direction: column;
+        gap: $spacing-sm;
+        text-align: center;
+      }
+    }
   }
 } 

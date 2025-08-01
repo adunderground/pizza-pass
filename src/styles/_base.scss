@@ -1,8 +1,8 @@
 // Pizza Pass Tracker - Base Styles
 
-@use 'sass:color';
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:color';
 
 // Reset and base styles
 * {
@@ -17,26 +17,28 @@ html {
 }
 
 body {
-  font-family: $font-secondary;
+  font-family: $font-body;
   font-size: $font-size-base;
   line-height: 1.6;
-  color: $text-primary;
-  background: $background-dark;
+  color: $text-hero;
+  background: $bg-sewer;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 // Typography
 h1, h2, h3, h4, h5, h6 {
-  @include heading-primary;
+  font-family: $font-primary;
+  font-weight: 700;
   margin-bottom: $spacing-md;
   line-height: 1.2;
+  color: $text-hero;
 }
 
 h1 {
   font-size: $font-size-4xl;
   
-  @include mobile {
+  @media (max-width: 768px) {
     font-size: $font-size-3xl;
   }
 }
@@ -44,7 +46,7 @@ h1 {
 h2 {
   font-size: $font-size-3xl;
   
-  @include mobile {
+  @media (max-width: 768px) {
     font-size: $font-size-2xl;
   }
 }
@@ -52,7 +54,7 @@ h2 {
 h3 {
   font-size: $font-size-2xl;
   
-  @include mobile {
+  @media (max-width: 768px) {
     font-size: $font-size-xl;
   }
 }
@@ -70,17 +72,20 @@ h6 {
 }
 
 p {
-  @include body-text;
+  font-family: $font-body;
+  font-size: $font-size-base;
+  line-height: 1.6;
   margin-bottom: $spacing-md;
+  color: $text-secondary;
 }
 
 a {
-  color: $primary-color;
+  color: $turtle-green;
   text-decoration: none;
   transition: $transition-fast;
   
   &:hover {
-    color: color.adjust($primary-color, $lightness: 10%);
+    color: $slime-lime;
   }
 }
 
@@ -90,27 +95,27 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: $background-darker;
+  background: $bg-grime;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $surface-color;
+  background: $turtle-green;
   border-radius: $border-radius-sm;
   
   &:hover {
-    background: color.adjust($surface-color, $lightness: 10%);
+    background: $slime-lime;
   }
 }
 
 // Selection styling
 ::selection {
-  background: $primary-color;
-  color: $text-primary;
+  background: $turtle-green;
+  color: $text-hero;
 }
 
 // Focus styles
 :focus {
-  outline: 2px solid $primary-color;
+  outline: 2px solid $turtle-green;
   outline-offset: 2px;
 }
 
@@ -119,10 +124,6 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 $spacing-lg;
-  
-  @include mobile {
-    padding: 0 $spacing-md;
-  }
 }
 
 .text-center {
@@ -156,4 +157,11 @@ a {
 .p-2 { padding: $spacing-sm; }
 .p-3 { padding: $spacing-md; }
 .p-4 { padding: $spacing-lg; }
-.p-5 { padding: $spacing-xl; } 
+.p-5 { padding: $spacing-xl; }
+
+// Responsive utilities
+@media (max-width: 768px) {
+  .container {
+    padding: 0 $spacing-md;
+  }
+} 

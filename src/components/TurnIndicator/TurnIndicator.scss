@@ -1,12 +1,9 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
-@use 'sass:color';
 
 .turn-indicator {
-  background: $background-dark;
-  border: 3px solid $primary-color;
-  margin: $spacing-3xl 0;
-  padding: $spacing-3xl;
+  background: linear-gradient(135deg, $bg-card 0%, $bg-highlight 100%);
+  padding: $spacing-2xl 0;
   position: relative;
   overflow: hidden;
   
@@ -16,184 +13,232 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 6px;
-    background: $primary-color;
-    animation: pulse 3s infinite;
+    bottom: 0;
+    background: linear-gradient(45deg, $turtle-green, $pizza-orange, $sewer-purple);
+    opacity: 0.05;
+    z-index: 0;
   }
   
-  &.inactive {
-    opacity: 0.7;
-    border-color: $text-muted;
-    
-    .turn-content {
-      text-align: center;
-      
-      h2 {
-        color: $text-muted;
-      }
-    }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    position: relative;
+    z-index: 1;
   }
   
   .turn-content {
-    @include fade-in;
+    text-align: center;
   }
   
   .turn-header {
-    @include flex-between;
     margin-bottom: $spacing-2xl;
     
-    @include mobile {
-      @include flex-column;
-      gap: $spacing-lg;
-      text-align: center;
-    }
-    
-    h2 {
-      @include heading-secondary;
-      font-size: $font-size-4xl;
-      font-weight: 900;
-      margin: 0;
-      color: $text-primary;
+    .comic-header {
+      font-family: $font-primary;
+      font-size: $font-size-3xl;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.05em;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+      color: $text-hero;
+      margin-bottom: $spacing-lg;
     }
     
     .pass-info {
-      @include flex-center;
+      display: flex;
+      justify-content: center;
       gap: $spacing-xl;
-      
-      @include mobile {
-        flex-direction: column;
-        gap: $spacing-md;
-      }
+      flex-wrap: wrap;
       
       .day-counter {
-        @include body-text;
-        background: $primary-color;
-        color: $background-dark;
-        padding: $spacing-md $spacing-lg;
-        border-radius: $border-radius-md;
-        font-weight: 900;
+        background: $turtle-green;
+        color: $bg-sewer;
+        padding: $spacing-sm $spacing-lg;
+        border-radius: $border-radius-lg;
+        font-family: $font-secondary;
+        font-weight: 700;
         font-size: $font-size-lg;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.05em;
       }
       
       .days-remaining {
-        @include caption-text;
-        color: $text-secondary;
-        font-size: $font-size-base;
-        font-weight: 600;
+        background: $pizza-orange;
+        color: $bg-sewer;
+        padding: $spacing-sm $spacing-lg;
+        border-radius: $border-radius-lg;
+        font-family: $font-secondary;
+        font-weight: 700;
+        font-size: $font-size-lg;
         text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
     }
   }
   
   .turn-display {
-    background: $surface-color;
-    border: 2px solid $primary-color;
-    border-radius: $border-radius-lg;
-    @include flex-between;
-    padding: $spacing-3xl;
-    margin: $spacing-2xl 0;
+    background: linear-gradient(135deg, $bg-card 0%, $bg-highlight 100%);
+    border-radius: $border-radius-xl;
+    padding: $spacing-2xl;
+    margin-bottom: $spacing-xl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xl;
     position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, $turtle-green, $pizza-orange, $sewer-purple);
+      opacity: 0.1;
+      z-index: 0;
+    }
     
     &.archie {
-      border-color: $primary-color;
-      
       .turn-avatar {
-        background: $primary-color;
-        color: $background-dark;
+        background: radial-gradient(circle, $turtle-green 0%, $slime-lime 100%);
       }
     }
     
     &.charles {
-      border-color: $secondary-color;
-      
       .turn-avatar {
-        background: $secondary-color;
-        color: $background-dark;
+        background: radial-gradient(circle, $pizza-orange 0%, $comic-red 100%);
       }
     }
     
-    @include mobile {
-      @include flex-column;
-      gap: $spacing-xl;
-      text-align: center;
-    }
-    
     .turn-avatar {
-      @include flex-center;
       width: 120px;
       height: 120px;
-      border-radius: 50%;
-      font-size: $font-size-5xl;
-      font-weight: 900;
-      flex-shrink: 0;
+      border-radius: $border-radius-full;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      transition: all $transition-normal;
       
-      @include mobile {
-        width: 100px;
-        height: 100px;
-        font-size: $font-size-4xl;
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(0, 166, 81, 0.5);
+      }
+      
+      .avatar-emoji {
+        font-size: 4rem;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
       }
     }
     
     .turn-details {
-      flex: 1;
-      margin: 0 $spacing-2xl;
-      
-      @include mobile {
-        margin: 0;
-      }
+      text-align: left;
+      position: relative;
+      z-index: 1;
       
       .turn-name {
-        @include heading-secondary;
+        font-family: $font-primary;
         font-size: $font-size-4xl;
-        font-weight: 900;
-        margin: 0 0 $spacing-md 0;
-        color: $text-primary;
+        font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: -0.02em;
+        letter-spacing: 0.05em;
+        color: $text-hero;
+        margin: 0 0 $spacing-sm 0;
+        text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
       }
       
       .turn-location {
-        @include body-text;
-        margin: 0;
-        font-size: $font-size-xl;
+        font-family: $font-body;
+        font-size: $font-size-lg;
         font-weight: 600;
         color: $text-secondary;
+        margin: 0;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.05em;
       }
     }
     
     .turn-status {
+      position: relative;
+      z-index: 1;
+      
       .status-badge {
-        @include body-text;
-        background: $success-color;
-        color: $background-dark;
-        padding: $spacing-md $spacing-lg;
-        border-radius: $border-radius-sm;
+        background: $neon-yellow;
+        color: $bg-sewer;
+        padding: $spacing-sm $spacing-lg;
+        border-radius: $border-radius-lg;
+        font-family: $font-secondary;
+        font-weight: 700;
         font-size: $font-size-sm;
-        font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.1em;
+        animation: animate-neon-pulse;
       }
     }
   }
   
   .turn-message {
-    text-align: center;
-    margin-top: $spacing-2xl;
-    
     p {
-      @include body-text;
-      font-size: $font-size-2xl;
-      font-weight: 600;
+      font-family: $font-body;
+      font-size: $font-size-lg;
+      font-weight: 500;
+      color: $text-secondary;
       margin: 0;
-      color: $text-primary;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      text-align: center;
+    }
+  }
+  
+  &.inactive {
+    .turn-content {
+      .comic-header {
+        color: $text-warning;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .turn-indicator {
+    padding: $spacing-xl 0;
+    
+    .turn-display {
+      flex-direction: column;
+      gap: $spacing-lg;
+      padding: $spacing-xl;
+      
+      .turn-avatar {
+        width: 100px;
+        height: 100px;
+        
+        .avatar-emoji {
+          font-size: 3rem;
+        }
+      }
+      
+      .turn-details {
+        text-align: center;
+        
+        .turn-name {
+          font-size: $font-size-3xl;
+        }
+      }
+    }
+    
+    .turn-header {
+      .pass-info {
+        flex-direction: column;
+        gap: $spacing-md;
+        
+        .day-counter,
+        .days-remaining {
+          font-size: $font-size-base;
+        }
+      }
     }
   }
 } 

@@ -25,34 +25,33 @@
 @mixin heading-primary {
   font-family: $font-primary;
   font-weight: 700;
-  color: $text-primary;
+  color: $text-hero;
 }
 
 @mixin heading-secondary {
   font-family: $font-primary;
   font-weight: 600;
-  color: $text-primary;
+  color: $text-hero;
 }
 
 @mixin body-text {
-  font-family: $font-secondary;
+  font-family: $font-body;
   font-weight: 400;
   color: $text-secondary;
 }
 
 @mixin caption-text {
-  font-family: $font-secondary;
+  font-family: $font-body;
   font-size: $font-size-sm;
-  color: $text-muted;
+  color: $text-secondary;
 }
 
 // Card styling
 @mixin card-style {
-  background: $surface-color;
+  background: $bg-card;
   border-radius: $border-radius-lg;
   padding: $spacing-lg;
   box-shadow: $shadow-md;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: $transition-normal;
   
   &:hover {
@@ -63,8 +62,8 @@
 
 // Button styling
 @mixin button-primary {
-  background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
-  color: $text-primary;
+  background: linear-gradient(135deg, $turtle-green, color.adjust($turtle-green, $lightness: -10%));
+  color: $text-hero;
   border: none;
   border-radius: $border-radius-md;
   padding: $spacing-sm $spacing-lg;
@@ -87,11 +86,11 @@
 
 // Gradient backgrounds
 @mixin gradient-primary {
-  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  background: linear-gradient(135deg, $turtle-green, $pizza-orange);
 }
 
 @mixin gradient-accent {
-  background: linear-gradient(135deg, $accent-color, $primary-color);
+  background: linear-gradient(135deg, $neon-yellow, $turtle-green);
 }
 
 // Responsive breakpoints

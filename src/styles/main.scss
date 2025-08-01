@@ -1,99 +1,209 @@
-// &PizzaPass - Main Styles
-
-@use 'sass:color';
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'base';
 
-// Google Fonts import
-@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;900&family=Tinos:wght@400;700&display=swap');
+// Import TMNT Fonts
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
 
-// Global app styles
-.app {
+// Global App Styles - Simple Dark Theme
+body {
+  background: #000000;
   min-height: 100vh;
-  background: $background-dark;
-  color: $text-primary;
+  font-family: $font-body;
+  color: $text-hero;
+  overflow-x: hidden;
 }
 
-// Layout components
+// App Layout
+.pizza-app-layout {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: #000000;
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: $spacing-2xl;
+    min-height: calc(100vh - #{$spacing-2xl});
+  }
+}
+
+// Main Content
 .main-content {
-  padding: $spacing-3xl 0;
-  
-  @include mobile {
-    padding: $spacing-2xl 0;
-  }
+  padding: $spacing-xl 0;
 }
 
-// Footer styles
-.footer {
-  background: $background-darker;
-  border-top: 3px solid $primary-color;
-  padding: $spacing-2xl 0;
-  margin-top: $spacing-3xl;
-  
-  p {
-    @include body-text;
-    text-align: center;
-    margin: 0;
-    font-size: $font-size-lg;
-    font-weight: 600;
-    color: $text-secondary;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-}
-
-// Grid system
+// Grid Layout
 .grid {
   display: grid;
-  gap: $spacing-2xl;
+  gap: $spacing-lg;
   
-  &.grid-2 {
+  &.grid-cols-2 {
     grid-template-columns: repeat(2, 1fr);
-    
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
   }
   
-  &.grid-3 {
+  &.grid-cols-3 {
     grid-template-columns: repeat(3, 1fr);
-    
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
+  }
+  
+  &.grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-// Animation classes
-.fade-in {
-  @include fade-in;
+// Responsive Grid
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
-.pulse {
-  @include pulse-animation;
+// Footer
+.footer {
+  margin-top: auto;
+  padding: $spacing-lg 0;
+  text-align: center;
+  font-family: $font-primary;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $text-secondary;
 }
 
-.slide-in {
-  @include slide-in;
-}
-
-// Custom scrollbar for webkit browsers
+// Custom Scrollbar
 .custom-scrollbar {
   &::-webkit-scrollbar {
     width: 8px;
   }
   
   &::-webkit-scrollbar-track {
-    background: $background-darker;
+    background: $bg-grime;
+    border-radius: $border-radius-md;
   }
   
   &::-webkit-scrollbar-thumb {
-    background: $surface-color;
-    border-radius: $border-radius-sm;
+    background: $turtle-green;
+    border-radius: $border-radius-md;
     
     &:hover {
-      background: color.adjust($surface-color, $lightness: 10%);
+      background: $slime-lime;
     }
   }
+}
+
+// Animation Classes
+@keyframes comic-pop {
+  0% {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  50% {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+}
+
+@keyframes money-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Animation Utility Classes
+.animate-comic-pop {
+  animation: comic-pop 0.6s ease-out;
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.animate-money-bounce {
+  animation: money-bounce 1s ease-in-out;
+}
+
+.animate-spin {
+  animation: spin 4s linear infinite;
+}
+
+// Hover Effects
+.hover-glow {
+  transition: all $transition-normal;
+  
+  &:hover {
+    box-shadow: $shadow-neon;
+    transform: translateY(-2px);
+  }
+}
+
+.hover-scale {
+  transition: transform $transition-normal;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Text Effects
+.hero-text {
+  font-family: $font-hero;
+  font-size: clamp(2rem, 8vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    3px 3px 0px $comic-red,
+    6px 6px 0px rgba(0,0,0,0.8);
+  color: $turtle-green;
+  -webkit-text-stroke: 2px $bg-sewer;
+}
+
+.comic-header {
+  font-family: $font-primary;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+  color: $text-hero;
+}
+
+.retro-number {
+  font-family: $font-secondary;
+  font-weight: 700;
+  color: $neon-yellow;
+  text-shadow: 0 0 10px $neon-yellow;
 } 

@@ -2,64 +2,85 @@
 @use '../../styles/mixins' as *;
 
 .header {
-  background: $background-dark;
-  border-bottom: 3px solid $primary-color;
-  padding: $spacing-2xl 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  background: #000000;
+  padding: $spacing-xl 0;
+  position: relative;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    position: relative;
+  }
   
   .header-content {
-    @include flex-between;
-    flex-wrap: wrap;
-    gap: $spacing-xl;
-    
-    @include mobile {
-      @include flex-column;
-      text-align: center;
-      gap: $spacing-lg;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
   }
   
   .logo {
-    @include flex-center;
-    gap: $spacing-lg;
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
     
     .logo-icon {
-      font-size: $font-size-5xl;
-      animation: pulse 2s infinite;
-      filter: drop-shadow(0 0 10px $primary-color);
-      
-      @include mobile {
-        font-size: $font-size-4xl;
-      }
+      font-size: $font-size-4xl;
     }
     
-    .logo-text {
-      @include heading-primary;
-      font-size: $font-size-5xl;
+    .hero-text {
+      font-family: $font-hero;
+      font-size: clamp(2rem, 8vw, 4rem);
       font-weight: 900;
-      margin: 0;
-      color: $text-primary;
       text-transform: uppercase;
-      letter-spacing: -0.02em;
-      text-shadow: 0 0 20px $primary-color;
-      
-      @include mobile {
-        font-size: $font-size-4xl;
-      }
+      letter-spacing: 0.1em;
+      text-shadow: 
+        3px 3px 0px $comic-red,
+        6px 6px 0px rgba(0,0,0,0.8);
+      color: $turtle-green;
+      -webkit-text-stroke: 2px #000000;
+      margin: 0;
     }
   }
   
-  .header-subtitle {
-    p {
-      @include body-text;
+  .day-counter {
+    .day-text {
+      font-family: $font-secondary;
       font-size: $font-size-lg;
-      font-weight: 600;
-      margin: 0;
-      color: $text-secondary;
+      font-weight: 700;
+      color: $neon-yellow;
+      text-shadow: 0 0 10px $neon-yellow;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .header {
+    padding: $spacing-lg 0;
+    
+    .header-content {
+      flex-direction: column;
+      gap: $spacing-md;
+      text-align: center;
+    }
+    
+    .logo {
+      flex-direction: column;
+      gap: $spacing-sm;
+      
+      .hero-text {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+      }
+    }
+    
+    .day-counter {
+      .day-text {
+        font-size: $font-size-base;
+      }
     }
   }
 } 

@@ -147,4 +147,11 @@ export const getPassProgress = () => {
   const todayLocal = getTodayLocal();
   const daysSinceStart = differenceInDays(todayLocal, PIZZA_PASS_START_DATE) + 1;
   return Math.min(100, Math.max(0, (daysSinceStart / TOTAL_PIZZAS_IN_PASS) * 100));
+};
+
+/**
+ * Get total number of pizzas ordered from an array of orders
+ */
+export const getTotalPizzasOrdered = (orders = []) => {
+  return orders.length;
 }; 

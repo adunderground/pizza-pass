@@ -1,22 +1,41 @@
-// &PizzaPass - Bold Design Variables
+// &PizzaPass - TMNT 80s/90s Design System Variables
 
-// Colors - Inspired by STFU Agency's bold contrast
-$primary-color: #ff0000; // Bold red
-$secondary-color: #00ff00; // Electric green
-$accent-color: #ffff00; // Bright yellow
-$background-dark: #000000; // Pure black
-$background-darker: #000000; // Pure black
-$surface-color: #111111; // Very dark gray
-$text-primary: #ffffff; // Pure white
-$text-secondary: #cccccc; // Light gray
-$text-muted: #888888; // Medium gray
-$success-color: #00ff00; // Electric green
-$error-color: #ff0000; // Bold red
-$warning-color: #ffff00; // Bright yellow
+// TMNT Core Colors
+$turtle-green: #00a651;      // Classic turtle shell green
+$pizza-orange: #ff6b35;      // Hot pizza orange
+$sewer-purple: #663399;      // Underground purple
+$neon-yellow: #ffff00;       // 80s neon yellow
 
-// Typography - Bold and impactful
-$font-primary: 'Chivo', sans-serif;
-$font-secondary: 'Tinos', serif;
+// Supporting Colors
+$comic-red: #dc143c;         // Bold comic red
+$electric-blue: #00bfff;     // Electric 80s blue
+$slime-lime: #32cd32;        // Bright lime green
+$pizza-gold: #ffd700;        // Cheesy gold
+
+// Background Colors - Dark Underground Theme
+$bg-sewer: #1a1a2e;          // Deep sewer dark
+$bg-tunnel: #16213e;         // Tunnel blue-black  
+$bg-shadow: #0f0f23;         // Deep shadow
+$bg-grime: #2d2d44;          // Gritty surface
+
+// Accent Backgrounds
+$bg-card: #2a2a3e;           // Card background
+$bg-highlight: #3d3d5c;      // Hover states
+
+// Text Colors
+$text-hero: #ffffff;         // Bold white text
+$text-secondary: #ccccdd;    // Slightly dimmed
+$text-accent: #00ff00;       // Neon green accent
+$text-warning: #ff4500;      // Alert orange
+$text-success: #32cd32;      // Success lime
+
+// Typography - TMNT Font Stack
+$font-hero: 'Bungee', 'Impact', sans-serif;        // Ultra bold, compressed
+$font-primary: 'Staatliches', 'Chivo', sans-serif; // Bold, angular
+$font-secondary: 'Orbitron', 'Tinos', monospace;   // Tech/retro feel
+$font-body: 'Rajdhani', sans-serif;                // Clean, slightly futuristic
+
+// Typography Sizes
 $font-size-xs: 0.75rem;
 $font-size-sm: 0.875rem;
 $font-size-base: 1rem;
@@ -25,7 +44,8 @@ $font-size-xl: 1.25rem;
 $font-size-2xl: 1.5rem;
 $font-size-3xl: 1.875rem;
 $font-size-4xl: 2.25rem;
-$font-size-5xl: 3rem; // Extra large for impact
+$font-size-5xl: 3rem;
+$font-size-6xl: 4rem;
 
 // Spacing
 $spacing-xs: 0.25rem;
@@ -34,21 +54,32 @@ $spacing-md: 1rem;
 $spacing-lg: 1.5rem;
 $spacing-xl: 2rem;
 $spacing-2xl: 3rem;
-$spacing-3xl: 4rem; // Extra large spacing
+$spacing-3xl: 4rem;
 
 // Border radius
 $border-radius-sm: 0.25rem;
 $border-radius-md: 0.5rem;
 $border-radius-lg: 1rem;
 $border-radius-xl: 1.5rem;
+$border-radius-full: 50%;
 
 // Shadows
 $shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 $shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 $shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+$shadow-neon: 0 0 20px rgba(0, 166, 81, 0.3);
 
 // Transitions
 $transition-fast: 0.15s ease-in-out;
 $transition-normal: 0.3s ease-in-out;
-$transition-slow: 0.5s ease-in-out; 
+$transition-slow: 0.5s ease-in-out;
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070; 

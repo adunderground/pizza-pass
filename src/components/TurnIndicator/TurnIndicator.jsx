@@ -28,7 +28,7 @@ const TurnIndicator = () => {
       <div className="turn-indicator inactive">
         <div className="container">
           <div className="turn-content">
-            <h2>🍕 Pizza Pass Expired</h2>
+            <h2 className="comic-header">🍕 Pizza Pass Expired</h2>
             <p>The &Pizza Pass period has ended. Thanks for tracking with us!</p>
           </div>
         </div>
@@ -36,12 +36,20 @@ const TurnIndicator = () => {
     );
   }
 
+  const getAvatar = (person) => {
+    return person === 'Archie' ? '🐢' : '🥷';
+  };
+
+  const getLocation = (person) => {
+    return person === 'Archie' ? 'Brookland, DC' : 'Reston, VA';
+  };
+
   return (
     <div className="turn-indicator">
       <div className="container">
         <div className="turn-content">
           <div className="turn-header">
-            <h2>Today's Turn</h2>
+            <h2 className="comic-header">Today's Turn</h2>
             <div className="pass-info">
               <span className="day-counter">Day {passDay} of 30</span>
               <span className="days-remaining">{daysRemaining} days left</span>
@@ -49,13 +57,13 @@ const TurnIndicator = () => {
           </div>
           
           <div className={`turn-display ${currentTurn?.toLowerCase()}`}>
-            <div className="turn-avatar">
-              {currentTurn === 'Archie' ? '👨‍💻' : '👨‍💼'}
+            <div className="turn-avatar hover-scale">
+              <span className="avatar-emoji">{getAvatar(currentTurn)}</span>
             </div>
             <div className="turn-details">
               <h3 className="turn-name">{currentTurn}</h3>
               <p className="turn-location">
-                {currentTurn === 'Archie' ? 'Brookland, DC' : 'Reston, VA'}
+                {getLocation(currentTurn)}
               </p>
             </div>
             <div className="turn-status">

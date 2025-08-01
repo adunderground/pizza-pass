@@ -1,113 +1,86 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  calculateCostPerPizza, 
-  calculateTotalSavings, 
-  formatCurrency, 
-  getPassProgress,
-  TOTAL_PASS_COST,
-  REGULAR_PIZZA_COST
-} from '../../utils/pizzaUtils';
-import { getTotalPizzasOrdered } from '../../utils/dataLoader';
+import { getPassProgress, calculateCostPerPizza, calculateTotalSavings, getTotalPizzasOrdered } from '../../utils/pizzaUtils';
+import { getSortedOrders } from '../../utils/dataLoader';
 import './StatsPanel.scss';
 
 const StatsPanel = () => {
+  const [pizzasOrdered, setPizzasOrdered] = useState(0);
   const [costPerPizza, setCostPerPizza] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [animatedPizzas, setAnimatedPizzas] = useState(0);
-  const [animatedSavings, setAnimatedSavings] = useState(0);
+  const [totalSavings, setTotalSavings] = useState(0);
+  const [passProgress, setPassProgress] = useState(0);
 
   useEffect(() => {
-    const totalPizzas = getTotalPizzasOrdered();
-    const costPer = calculateCostPerPizza(totalPizzas);
-    const savings = calculateTotalSavings(totalPizzas);
-    const passProgress = getPassProgress();
+    const updateStats = () => {
+      const orders = getSortedOrders();
+      const totalPizzas = getTotalPizzasOrdered(orders);
+      const costPer = calculateCostPerPizza(totalPizzas);
+      const savings = calculateTotalSavings(totalPizzas);
+      const progress = getPassProgress();
 
-    setCostPerPizza(costPer);
-    setProgress(passProgress);
-
-    // Animate counters
-    const animateCounters = () => {
-      let currentPizzas = 0;
-      let currentSavings = 0;
-      const targetPizzas = totalPizzas;
-      const targetSavings = savings;
-      const duration = 1000; // 1 second
-      const interval = 16; // 60fps
-      const steps = duration / interval;
-      const pizzasStep = targetPizzas / steps;
-      const savingsStep = targetSavings / steps;
-
-      const timer = setInterval(() => {
-        currentPizzas = Math.min(currentPizzas + pizzasStep, targetPizzas);
-        currentSavings = Math.min(currentSavings + savingsStep, targetSavings);
-        
-        setAnimatedPizzas(Math.round(currentPizzas));
-        setAnimatedSavings(Math.round(currentSavings * 100) / 100);
-        
-        if (currentPizzas >= targetPizzas && currentSavings >= targetSavings) {
-          clearInterval(timer);
-        }
-      }, interval);
+      setPizzasOrdered(totalPizzas);
+      setCostPerPizza(costPer);
+      setTotalSavings(savings);
+      setPassProgress(progress);
     };
 
-    animateCounters();
+    updateStats();
   }, []);
 
   return (
     <div className="stats-panel">
       <div className="container">
-        <div className="stats-grid">
-          <div className="stat-card pizzas-ordered">
+        <div className="stats-header">
+          <h2 className="comic-header">Pizza Stats</h2>
+        </div>
+        
+        <div className="stats-grid grid grid-cols-2">
+          <div className="stat-card hover-glow">
             <div className="stat-icon">🍕</div>
             <div className="stat-content">
-              <h3 className="stat-value">{animatedPizzas}</h3>
-              <p className="stat-label">Pizzas Ordered</p>
-              <p className="stat-subtitle">of 30 total</p>
+              <div className="stat-value retro-number">{pizzasOrdered}</div>
+              <div className="stat-label">Pizzas Ordered</div>
             </div>
           </div>
-
-          <div className="stat-card cost-per-pizza">
+          
+          <div className="stat-card hover-glow">
             <div className="stat-icon">💰</div>
             <div className="stat-content">
-              <h3 className="stat-value">{formatCurrency(costPerPizza)}</h3>
-              <p className="stat-label">Cost Per Pizza</p>
-              <p className="stat-subtitle">vs {formatCurrency(REGULAR_PIZZA_COST)} regular</p>
+              <div className="stat-value retro-number">${costPerPizza.toFixed(2)}</div>
+              <div className="stat-label">Cost Per Pizza</div>
             </div>
           </div>
-
-          <div className="stat-card total-savings">
+          
+          <div className="stat-card hover-glow">
             <div className="stat-icon">💸</div>
             <div className="stat-content">
-              <h3 className="stat-value">{formatCurrency(animatedSavings)}</h3>
-              <p className="stat-label">Total Savings</p>
-              <p className="stat-subtitle">vs regular pricing</p>
+              <div className="stat-value retro-number">${totalSavings.toFixed(2)}</div>
+              <div className="stat-label">Total Savings</div>
             </div>
           </div>
-
-          <div className="stat-card pass-progress">
+          
+          <div className="stat-card hover-glow">
             <div className="stat-icon">📊</div>
             <div className="stat-content">
-              <h3 className="stat-value">{Math.round(progress)}%</h3>
-              <p className="stat-label">Pass Progress</p>
-              <p className="stat-subtitle">through 30-day period</p>
+              <div className="stat-value retro-number">{Math.round(passProgress)}%</div>
+              <div className="stat-label">Pass Progress</div>
             </div>
           </div>
         </div>
-
+        
         <div className="progress-section">
           <div className="progress-header">
-            <h3>Pass Progress</h3>
-            <span className="progress-text">{Math.round(progress)}% Complete</span>
+            <h3 className="comic-header">Pass Progress</h3>
+            <span className="progress-text">{pizzasOrdered} of 30 pizzas</span>
           </div>
           <div className="progress-bar">
             <div 
               className="progress-fill" 
-              style={{ width: `${progress}%` }}
+              style={{ width: `${passProgress}%` }}
             ></div>
           </div>
           <div className="progress-details">
-            <span>Total Cost: {formatCurrency(TOTAL_PASS_COST)}</span>
-            <span>Regular Cost: {formatCurrency(REGULAR_PIZZA_COST * 30)}</span>
+            <span>Day {Math.ceil(passProgress * 0.3)} of 30</span>
+            <span>{30 - Math.ceil(passProgress * 0.3)} days remaining</span>
           </div>
         </div>
       </div>

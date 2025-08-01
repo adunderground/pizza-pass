@@ -1,0 +1,5 @@
+---
+description: when generating images with openai-gpt-image-mcp always use quality=low 
+globs:
+alwaysApply: true
+---

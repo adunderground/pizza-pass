@@ -1,24 +1,21 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import TurnIndicator from './components/TurnIndicator/TurnIndicator';
-import StatsPanel from './components/StatsPanel/StatsPanel';
-import OrderHistory from './components/OrderHistory/OrderHistory';
+import { Header, OrderHistory } from './components';
+import PizzaCentral from './components/PizzaCentral/PizzaCentral';
 import './styles/main.scss';
 
 function App() {
   return (
-    <div className="app">
-      <Header />
-      <main className="main-content">
-        <TurnIndicator />
-        <StatsPanel />
-        <OrderHistory />
-      </main>
-      <footer className="footer">
-        <div className="container">
-          <p>&copy; 2025 &PizzaPass • Built with ❤️ and 🍕</p>
-        </div>
-      </footer>
+    <div className="pizza-app-layout">
+      <div className="app-container">
+        <Header />
+        <main className="main-content">
+          <PizzaCentral />
+          <OrderHistory />
+        </main>
+        <footer className="footer">
+          <p>&PizzaPass 🍕</p>
+        </footer>
+      </div>
     </div>
   );
 }
