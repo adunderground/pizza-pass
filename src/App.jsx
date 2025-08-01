@@ -16,7 +16,7 @@ function App() {
       </main>
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2025 Pizza Pass Tracker • Built with ❤️ and 🍕</p>
+          <p>&copy; 2025 &PizzaPass • Built with ❤️ and 🍕</p>
         </div>
       </footer>
     </div>

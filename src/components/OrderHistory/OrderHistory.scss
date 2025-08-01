@@ -3,45 +3,59 @@
 @use 'sass:color';
 
 .order-history {
-  margin: $spacing-xl 0;
+  margin: $spacing-3xl 0;
   
   .history-header {
     @include flex-between;
-    margin-bottom: $spacing-xl;
+    margin-bottom: $spacing-3xl;
     
     @include mobile {
       @include flex-column;
-      gap: $spacing-lg;
+      gap: $spacing-2xl;
       text-align: center;
     }
     
     h2 {
       @include heading-secondary;
       margin: 0;
+      font-size: $font-size-4xl;
+      font-weight: 900;
+      color: $text-primary;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
     }
     
     .filter-controls {
       @include flex-center;
-      gap: $spacing-sm;
+      gap: $spacing-lg;
       
       @include mobile {
         flex-wrap: wrap;
       }
       
       .filter-btn {
-        @include button-primary;
         background: $surface-color;
         color: $text-secondary;
-        border: 1px solid rgba($primary-color, 0.3);
+        border: 2px solid $primary-color;
+        border-radius: $border-radius-md;
+        padding: $spacing-md $spacing-xl;
+        font-family: $font-primary;
+        font-weight: 700;
+        font-size: $font-size-base;
+        cursor: pointer;
+        transition: $transition-normal;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
         
         &.active {
           background: $primary-color;
-          color: $text-primary;
+          color: $background-dark;
         }
         
         &:hover {
-          background: color.adjust($primary-color, $lightness: 10%);
-          color: $text-primary;
+          background: $primary-color;
+          color: $background-dark;
+          transform: translateY(-2px);
         }
       }
     }
@@ -50,40 +64,48 @@
   .orders-timeline {
     display: flex;
     flex-direction: column;
-    gap: $spacing-lg;
+    gap: $spacing-2xl;
     
     .no-orders {
-      @include card-style;
+      background: $surface-color;
+      border: 2px solid $text-muted;
+      border-radius: $border-radius-lg;
       text-align: center;
-      padding: $spacing-xl;
+      padding: $spacing-3xl;
       
       p {
         @include body-text;
-        font-size: $font-size-lg;
+        font-size: $font-size-2xl;
+        font-weight: 600;
         margin: 0;
-        opacity: 0.7;
+        color: $text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
     }
     
     .order-card {
-      @include card-style;
-      padding: $spacing-lg;
+      background: $surface-color;
+      border: 3px solid transparent;
+      border-radius: $border-radius-lg;
+      padding: $spacing-2xl;
       position: relative;
-      border-left: 4px solid transparent;
       
       &.archie {
-        border-left-color: $primary-color;
+        border-color: $primary-color;
         
         .person-icon {
-          background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
+          background: $primary-color;
+          color: $background-dark;
         }
       }
       
       &.charles {
-        border-left-color: $secondary-color;
+        border-color: $secondary-color;
         
         .person-icon {
-          background: linear-gradient(135deg, $secondary-color, color.adjust($secondary-color, $lightness: -10%));
+          background: $secondary-color;
+          color: $background-dark;
         }
       }
       
@@ -97,38 +119,47 @@
       
       .order-header {
         @include flex-between;
-        margin-bottom: $spacing-md;
+        margin-bottom: $spacing-xl;
         
         @include mobile {
           @include flex-column;
-          gap: $spacing-sm;
+          gap: $spacing-lg;
           align-items: flex-start;
         }
         
         .order-person {
           @include flex-center;
-          gap: $spacing-sm;
+          gap: $spacing-lg;
           
           .person-icon {
             @include flex-center;
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            font-size: $font-size-xl;
-            box-shadow: $shadow-md;
+            font-size: $font-size-3xl;
+            font-weight: 900;
             flex-shrink: 0;
           }
           
           .person-info {
             .person-name {
               @include heading-secondary;
-              font-size: $font-size-lg;
-              margin: 0 0 $spacing-xs 0;
+              font-size: $font-size-2xl;
+              font-weight: 900;
+              margin: 0 0 $spacing-sm 0;
+              color: $text-primary;
+              text-transform: uppercase;
+              letter-spacing: -0.02em;
             }
             
             .order-date {
               @include caption-text;
               margin: 0;
+              font-size: $font-size-lg;
+              font-weight: 600;
+              color: $text-secondary;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
             }
           }
         }
@@ -136,26 +167,26 @@
         .order-status {
           .status-badge {
             @include body-text;
-            padding: $spacing-xs $spacing-sm;
+            padding: $spacing-md $spacing-lg;
             border-radius: $border-radius-sm;
-            font-size: $font-size-xs;
-            font-weight: 600;
+            font-size: $font-size-sm;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.2em;
             
             &.correct {
-              background: rgba($success-color, 0.2);
-              color: $success-color;
+              background: $success-color;
+              color: $background-dark;
             }
             
             &.incorrect {
-              background: rgba($error-color, 0.2);
-              color: $error-color;
+              background: $error-color;
+              color: $background-dark;
             }
             
             &.unknown {
-              background: rgba($text-muted, 0.2);
-              color: $text-muted;
+              background: $text-muted;
+              color: $background-dark;
             }
           }
         }
@@ -163,28 +194,34 @@
       
       .order-details {
         .pizza-info {
-          margin-bottom: $spacing-md;
+          margin-bottom: $spacing-xl;
           
           .pizza-name {
             @include heading-secondary;
-            font-size: $font-size-base;
-            margin: 0 0 $spacing-xs 0;
+            font-size: $font-size-xl;
+            font-weight: 700;
+            margin: 0 0 $spacing-md 0;
             color: $primary-color;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
           }
           
           .pizza-ingredients {
             @include body-text;
-            font-size: $font-size-sm;
+            font-size: $font-size-base;
+            font-weight: 600;
             margin: 0;
-            opacity: 0.8;
-            line-height: 1.4;
+            color: $text-secondary;
+            line-height: 1.6;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
           }
         }
         
         .order-meta {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: $spacing-sm;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: $spacing-lg;
           
           @include mobile {
             grid-template-columns: 1fr;
@@ -195,13 +232,20 @@
             
             .meta-label {
               @include caption-text;
-              font-weight: 600;
+              font-weight: 700;
+              font-size: $font-size-base;
+              color: $text-secondary;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
             }
             
             .meta-value {
               @include body-text;
-              font-size: $font-size-sm;
-              opacity: 0.8;
+              font-size: $font-size-base;
+              font-weight: 600;
+              color: $text-primary;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
             }
           }
         }
@@ -210,18 +254,20 @@
   }
   
   .history-summary {
-    margin-top: $spacing-xl;
+    margin-top: $spacing-3xl;
     
     .summary-stats {
-      @include card-style;
+      background: $surface-color;
+      border: 3px solid $primary-color;
+      border-radius: $border-radius-lg;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: $spacing-lg;
-      padding: $spacing-lg;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $spacing-2xl;
+      padding: $spacing-2xl;
       
       @include mobile {
         grid-template-columns: 1fr;
-        gap: $spacing-md;
+        gap: $spacing-xl;
       }
       
       .summary-item {
@@ -229,12 +275,20 @@
         
         .summary-label {
           @include body-text;
-          font-weight: 600;
+          font-weight: 700;
+          font-size: $font-size-lg;
+          color: $text-secondary;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
         }
         
         .summary-value {
           @include heading-secondary;
           color: $primary-color;
+          font-weight: 900;
+          font-size: $font-size-xl;
+          text-transform: uppercase;
+          letter-spacing: -0.02em;
         }
       }
     }

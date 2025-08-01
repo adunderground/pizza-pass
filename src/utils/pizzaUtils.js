@@ -1,4 +1,4 @@
-import { parse, differenceInDays, format } from 'date-fns';
+import { parse, differenceInDays, format, startOfDay } from 'date-fns';
 
 // Constants
 export const PIZZA_PASS_START_DATE = new Date('2025-07-21');
@@ -26,6 +26,14 @@ export const parseOrderDate = (dateString) => {
 };
 
 /**
+ * Get today's date in local timezone (start of day)
+ */
+export const getTodayLocal = () => {
+  const now = new Date();
+  return startOfDay(now);
+};
+
+/**
  * Calculate which day of the pass a given date is (1-30)
  */
 export const getPassDay = (date) => {
@@ -44,10 +52,11 @@ export const getWhoseTurn = (date) => {
 };
 
 /**
- * Get whose turn it is today
+ * Get whose turn it is today (using local date)
  */
 export const getCurrentTurn = () => {
-  return getWhoseTurn(new Date());
+  const todayLocal = getTodayLocal();
+  return getWhoseTurn(todayLocal);
 };
 
 /**
@@ -82,8 +91,8 @@ export const calculateTotalSavings = (pizzasOrdered) => {
  * Calculate days remaining in the pass
  */
 export const getDaysRemaining = () => {
-  const today = new Date();
-  const daysSinceStart = differenceInDays(today, PIZZA_PASS_START_DATE) + 1;
+  const todayLocal = getTodayLocal();
+  const daysSinceStart = differenceInDays(todayLocal, PIZZA_PASS_START_DATE) + 1;
   return Math.max(0, TOTAL_PIZZAS_IN_PASS - daysSinceStart);
 };
 
@@ -91,8 +100,8 @@ export const getDaysRemaining = () => {
  * Check if the pass is still active
  */
 export const isPassActive = () => {
-  const today = new Date();
-  return today >= PIZZA_PASS_START_DATE && today <= PIZZA_PASS_END_DATE;
+  const todayLocal = getTodayLocal();
+  return todayLocal >= PIZZA_PASS_START_DATE && todayLocal <= PIZZA_PASS_END_DATE;
 };
 
 /**
@@ -135,7 +144,7 @@ export const processPizzaOrder = (order) => {
  * Get pass progress percentage
  */
 export const getPassProgress = () => {
-  const today = new Date();
-  const daysSinceStart = differenceInDays(today, PIZZA_PASS_START_DATE) + 1;
+  const todayLocal = getTodayLocal();
+  const daysSinceStart = differenceInDays(todayLocal, PIZZA_PASS_START_DATE) + 1;
   return Math.min(100, Math.max(0, (daysSinceStart / TOTAL_PIZZAS_IN_PASS) * 100));
 }; 

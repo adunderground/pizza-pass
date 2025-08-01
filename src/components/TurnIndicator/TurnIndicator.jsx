@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getCurrentTurn, getPassDay, getDaysRemaining, isPassActive } from '../../utils/pizzaUtils';
+import { getCurrentTurn, getPassDay, getDaysRemaining, isPassActive, getTodayLocal } from '../../utils/pizzaUtils';
 import './TurnIndicator.scss';
 
 const TurnIndicator = () => {
@@ -11,7 +11,7 @@ const TurnIndicator = () => {
   useEffect(() => {
     const updateTurnInfo = () => {
       setCurrentTurn(getCurrentTurn());
-      setPassDay(getPassDay(new Date()));
+      setPassDay(getPassDay(getTodayLocal()));
       setDaysRemaining(getDaysRemaining());
       setIsActive(isPassActive());
     };

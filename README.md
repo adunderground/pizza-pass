@@ -1,6 +1,6 @@
-# 🍕 Pizza Pass Tracker
+# 🍕 &PizzaPass
 
-A fun, bold React SPA to track the &Pizza Pass deal between Archie and Charles, calculating savings in real-time with a funky, modern interface.
+A bold, modern React SPA to track the &Pizza Pass deal between Archie and Charles, calculating savings in real-time with a striking, high-contrast interface inspired by STFU Agency's bold design aesthetic.
 
 ## 🎯 Project Overview
 
@@ -14,7 +14,7 @@ A fun, bold React SPA to track the &Pizza Pass deal between Archie and Charles, 
 
 ### 🎯 Turn Rotation System
 - Automatically determines whose turn it is based on current date
-- Visual indicator of current person's turn
+- Bold visual indicator of current person's turn
 - Rotation pattern: Archie → Charles → repeat (alternating daily)
 - Handles skipped days (price per pizza stays same)
 
@@ -33,16 +33,17 @@ A fun, bold React SPA to track the &Pizza Pass deal between Archie and Charles, 
 - Visual distinction between each person's orders
 
 ### 🎨 Design Features
-- **Theme**: BOLD and Modern with dark theme
-- **Typography**: Chivo (headlines) + Tinos (body)
+- **Theme**: BOLD and HIGH-CONTRAST with pure black background
+- **Typography**: Chivo (headlines) + Tinos (body) with heavy weights
+- **Colors**: Electric red, green, and yellow on pure black
 - **Responsive**: Works on mobile/desktop
 - **Animations**: Smooth transitions and hover effects
-- **Funky Aesthetic**: Something you'd want to show off to friends
+- **Bold Aesthetic**: Inspired by STFU Agency's striking design
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher)
+- Node.js (v20 or higher)
 - npm or yarn
 
 ### Installation
@@ -79,12 +80,12 @@ npm run dev
 ```
 src/
 ├── components/          # React components
-│   ├── Header/         # App header with logo
+│   ├── Header/         # App header with &PizzaPass logo
 │   ├── TurnIndicator/  # Shows whose turn today
 │   ├── StatsPanel/     # Cost calculations & progress
 │   └── OrderHistory/   # Timeline of orders
 ├── styles/             # SCSS styles
-│   ├── _variables.scss # Design system variables
+│   ├── _variables.scss # Bold design system variables
 │   ├── _mixins.scss    # Reusable style patterns
 │   ├── _base.scss      # Reset & typography
 │   └── main.scss       # Main styles
@@ -126,18 +127,18 @@ From `pizza-data.json`:
 ## 🎨 Design System
 
 ### Colors
-- **Primary**: Vibrant orange (#ff6b35)
-- **Secondary**: Teal (#4ecdc4)
-- **Accent**: Yellow (#ffe66d)
-- **Background**: Dark (#1a1a1a)
-- **Surface**: Dark gray (#2a2a2a)
+- **Primary**: Bold red (#ff0000)
+- **Secondary**: Electric green (#00ff00)
+- **Accent**: Bright yellow (#ffff00)
+- **Background**: Pure black (#000000)
+- **Surface**: Very dark gray (#111111)
 
 ### Typography
-- **Headlines**: Chivo (Bold, 600, 700)
+- **Headlines**: Chivo (Bold, 600, 700, 900)
 - **Body**: Tinos (Regular, 400, 700)
 
 ### Spacing
-- Consistent spacing scale (xs, sm, md, lg, xl, 2xl)
+- Consistent spacing scale (xs, sm, md, lg, xl, 2xl, 3xl)
 - Responsive breakpoints for mobile/desktop
 
 ## 🚀 Available Scripts
@@ -151,7 +152,7 @@ From `pizza-data.json`:
 - ✅ Accurately tracks pizza orders and costs
 - ✅ Correctly rotates turns based on dates
 - ✅ Provides clear savings visualization
-- ✅ Looks awesome and modern
+- ✅ Looks bold and impactful
 - ✅ Fun to use and show friends
 - ✅ Responsive design works on mobile/desktop
 

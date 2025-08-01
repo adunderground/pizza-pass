@@ -3,12 +3,10 @@
 @use 'sass:color';
 
 .turn-indicator {
-  background: linear-gradient(135deg, $surface-color, $background-darker);
-  border-radius: $border-radius-xl;
-  margin: $spacing-xl 0;
-  padding: $spacing-xl;
-  box-shadow: $shadow-xl;
-  border: 2px solid rgba($primary-color, 0.2);
+  background: $background-dark;
+  border: 3px solid $primary-color;
+  margin: $spacing-3xl 0;
+  padding: $spacing-3xl;
   position: relative;
   overflow: hidden;
   
@@ -18,13 +16,14 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, $primary-color, $secondary-color, $accent-color);
+    height: 6px;
+    background: $primary-color;
     animation: pulse 3s infinite;
   }
   
   &.inactive {
     opacity: 0.7;
+    border-color: $text-muted;
     
     .turn-content {
       text-align: center;
@@ -41,92 +40,107 @@
   
   .turn-header {
     @include flex-between;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-2xl;
     
     @include mobile {
       @include flex-column;
-      gap: $spacing-sm;
+      gap: $spacing-lg;
       text-align: center;
     }
     
     h2 {
       @include heading-secondary;
-      font-size: $font-size-2xl;
+      font-size: $font-size-4xl;
+      font-weight: 900;
       margin: 0;
+      color: $text-primary;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
     }
     
     .pass-info {
       @include flex-center;
-      gap: $spacing-md;
+      gap: $spacing-xl;
       
       @include mobile {
         flex-direction: column;
-        gap: $spacing-xs;
+        gap: $spacing-md;
       }
       
       .day-counter {
         @include body-text;
-        background: rgba($primary-color, 0.2);
-        padding: $spacing-xs $spacing-sm;
+        background: $primary-color;
+        color: $background-dark;
+        padding: $spacing-md $spacing-lg;
         border-radius: $border-radius-md;
-        font-weight: 600;
+        font-weight: 900;
+        font-size: $font-size-lg;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
       
       .days-remaining {
         @include caption-text;
-        color: $text-muted;
+        color: $text-secondary;
+        font-size: $font-size-base;
+        font-weight: 600;
+        text-transform: uppercase;
       }
     }
   }
   
   .turn-display {
-    @include card-style;
+    background: $surface-color;
+    border: 2px solid $primary-color;
+    border-radius: $border-radius-lg;
     @include flex-between;
-    padding: $spacing-xl;
-    margin: $spacing-lg 0;
+    padding: $spacing-3xl;
+    margin: $spacing-2xl 0;
     position: relative;
     
     &.archie {
-      border-left: 4px solid $primary-color;
+      border-color: $primary-color;
       
       .turn-avatar {
-        background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
+        background: $primary-color;
+        color: $background-dark;
       }
     }
     
     &.charles {
-      border-left: 4px solid $secondary-color;
+      border-color: $secondary-color;
       
       .turn-avatar {
-        background: linear-gradient(135deg, $secondary-color, color.adjust($secondary-color, $lightness: -10%));
+        background: $secondary-color;
+        color: $background-dark;
       }
     }
     
     @include mobile {
       @include flex-column;
-      gap: $spacing-md;
+      gap: $spacing-xl;
       text-align: center;
     }
     
     .turn-avatar {
       @include flex-center;
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      font-size: $font-size-3xl;
-      box-shadow: $shadow-lg;
+      font-size: $font-size-5xl;
+      font-weight: 900;
       flex-shrink: 0;
       
       @include mobile {
-        width: 60px;
-        height: 60px;
-        font-size: $font-size-2xl;
+        width: 100px;
+        height: 100px;
+        font-size: $font-size-4xl;
       }
     }
     
     .turn-details {
       flex: 1;
-      margin: 0 $spacing-lg;
+      margin: 0 $spacing-2xl;
       
       @include mobile {
         margin: 0;
@@ -134,14 +148,22 @@
       
       .turn-name {
         @include heading-secondary;
-        font-size: $font-size-2xl;
-        margin: 0 0 $spacing-xs 0;
+        font-size: $font-size-4xl;
+        font-weight: 900;
+        margin: 0 0 $spacing-md 0;
+        color: $text-primary;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
       }
       
       .turn-location {
         @include body-text;
         margin: 0;
-        opacity: 0.8;
+        font-size: $font-size-xl;
+        font-weight: 600;
+        color: $text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
     }
     
@@ -149,26 +171,29 @@
       .status-badge {
         @include body-text;
         background: $success-color;
-        color: $text-primary;
-        padding: $spacing-xs $spacing-sm;
+        color: $background-dark;
+        padding: $spacing-md $spacing-lg;
         border-radius: $border-radius-sm;
-        font-size: $font-size-xs;
-        font-weight: 600;
+        font-size: $font-size-sm;
+        font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.2em;
       }
     }
   }
   
   .turn-message {
     text-align: center;
-    margin-top: $spacing-lg;
+    margin-top: $spacing-2xl;
     
     p {
       @include body-text;
-      font-size: $font-size-lg;
+      font-size: $font-size-2xl;
+      font-weight: 600;
       margin: 0;
-      opacity: 0.9;
+      color: $text-primary;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
   }
 } 

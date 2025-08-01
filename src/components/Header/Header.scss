@@ -2,45 +2,51 @@
 @use '../../styles/mixins' as *;
 
 .header {
-  background: linear-gradient(135deg, $background-darker, $surface-color);
-  border-bottom: 2px solid rgba($primary-color, 0.3);
-  padding: $spacing-lg 0;
+  background: $background-dark;
+  border-bottom: 3px solid $primary-color;
+  padding: $spacing-2xl 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
   
   .header-content {
     @include flex-between;
     flex-wrap: wrap;
-    gap: $spacing-md;
+    gap: $spacing-xl;
     
     @include mobile {
       @include flex-column;
       text-align: center;
+      gap: $spacing-lg;
     }
   }
   
   .logo {
     @include flex-center;
-    gap: $spacing-sm;
+    gap: $spacing-lg;
     
     .logo-icon {
-      font-size: $font-size-3xl;
+      font-size: $font-size-5xl;
       animation: pulse 2s infinite;
+      filter: drop-shadow(0 0 10px $primary-color);
+      
+      @include mobile {
+        font-size: $font-size-4xl;
+      }
     }
     
     .logo-text {
       @include heading-primary;
-      font-size: $font-size-3xl;
+      font-size: $font-size-5xl;
+      font-weight: 900;
       margin: 0;
-      background: linear-gradient(135deg, $primary-color, $secondary-color);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: $text-primary;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 20px $primary-color;
       
       @include mobile {
-        font-size: $font-size-2xl;
+        font-size: $font-size-4xl;
       }
     }
   }
@@ -48,9 +54,12 @@
   .header-subtitle {
     p {
       @include body-text;
-      font-size: $font-size-sm;
+      font-size: $font-size-lg;
+      font-weight: 600;
       margin: 0;
-      opacity: 0.8;
+      color: $text-secondary;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
   }
 } 

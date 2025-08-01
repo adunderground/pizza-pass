@@ -2,62 +2,54 @@
 @use '../../styles/mixins' as *;
 
 .stats-panel {
-  margin: $spacing-xl 0;
+  margin: $spacing-3xl 0;
   
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: $spacing-lg;
-    margin-bottom: $spacing-xl;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-2xl;
+    margin-bottom: $spacing-3xl;
     
     @include mobile {
       grid-template-columns: 1fr;
-      gap: $spacing-md;
+      gap: $spacing-xl;
     }
   }
   
   .stat-card {
-    @include card-style;
+    background: $surface-color;
+    border: 3px solid $primary-color;
+    border-radius: $border-radius-lg;
     @include flex-center;
-    gap: $spacing-md;
-    padding: $spacing-xl;
+    gap: $spacing-xl;
+    padding: $spacing-3xl;
     position: relative;
     overflow: hidden;
     
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, $primary-color, $secondary-color);
+    &.pizzas-ordered {
+      border-color: $primary-color;
     }
     
-    &.pizzas-ordered::before {
-      background: linear-gradient(90deg, $primary-color, $accent-color);
+    &.cost-per-pizza {
+      border-color: $secondary-color;
     }
     
-    &.cost-per-pizza::before {
-      background: linear-gradient(90deg, $secondary-color, $primary-color);
+    &.total-savings {
+      border-color: $accent-color;
     }
     
-    &.total-savings::before {
-      background: linear-gradient(90deg, $success-color, $accent-color);
-    }
-    
-    &.pass-progress::before {
-      background: linear-gradient(90deg, $accent-color, $secondary-color);
+    &.pass-progress {
+      border-color: $success-color;
     }
     
     @include fade-in;
     
     .stat-icon {
-      font-size: $font-size-3xl;
+      font-size: $font-size-5xl;
       flex-shrink: 0;
       
       @include mobile {
-        font-size: $font-size-2xl;
+        font-size: $font-size-4xl;
       }
     }
     
@@ -67,76 +59,97 @@
       
       .stat-value {
         @include heading-primary;
-        font-size: $font-size-3xl;
-        margin: 0 0 $spacing-xs 0;
-        color: $primary-color;
+        font-size: $font-size-5xl;
+        font-weight: 900;
+        margin: 0 0 $spacing-md 0;
+        color: $text-primary;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
         
         @include mobile {
-          font-size: $font-size-2xl;
+          font-size: $font-size-4xl;
         }
       }
       
       .stat-label {
         @include heading-secondary;
-        font-size: $font-size-base;
-        margin: 0 0 $spacing-xs 0;
+        font-size: $font-size-xl;
+        font-weight: 700;
+        margin: 0 0 $spacing-md 0;
         color: $text-primary;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
       
       .stat-subtitle {
         @include caption-text;
         margin: 0;
-        font-size: $font-size-sm;
+        font-size: $font-size-lg;
+        font-weight: 600;
+        color: $text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
     }
     
     &:hover {
-      transform: translateY(-4px);
-      box-shadow: $shadow-xl;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba($primary-color, 0.3);
     }
   }
   
   .progress-section {
-    @include card-style;
-    padding: $spacing-xl;
+    background: $surface-color;
+    border: 3px solid $primary-color;
+    border-radius: $border-radius-lg;
+    padding: $spacing-3xl;
     
     .progress-header {
       @include flex-between;
-      margin-bottom: $spacing-lg;
+      margin-bottom: $spacing-2xl;
       
       @include mobile {
         @include flex-column;
-        gap: $spacing-sm;
+        gap: $spacing-lg;
         text-align: center;
       }
       
       h3 {
         @include heading-secondary;
         margin: 0;
-        font-size: $font-size-xl;
+        font-size: $font-size-3xl;
+        font-weight: 900;
+        color: $text-primary;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
       }
       
       .progress-text {
         @include body-text;
-        background: rgba($primary-color, 0.2);
-        padding: $spacing-xs $spacing-sm;
+        background: $primary-color;
+        color: $background-dark;
+        padding: $spacing-md $spacing-lg;
         border-radius: $border-radius-md;
-        font-weight: 600;
+        font-weight: 900;
+        font-size: $font-size-lg;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
     }
     
     .progress-bar {
       width: 100%;
-      height: 12px;
-      background: $background-darker;
+      height: 20px;
+      background: $background-dark;
+      border: 2px solid $primary-color;
       border-radius: $border-radius-lg;
       overflow: hidden;
-      margin-bottom: $spacing-md;
+      margin-bottom: $spacing-xl;
       position: relative;
       
       .progress-fill {
         height: 100%;
-        background: linear-gradient(90deg, $primary-color, $secondary-color);
+        background: $primary-color;
         border-radius: $border-radius-lg;
         transition: width 1s ease-out;
         position: relative;
@@ -159,14 +172,17 @@
       
       @include mobile {
         @include flex-column;
-        gap: $spacing-sm;
+        gap: $spacing-lg;
         text-align: center;
       }
       
       span {
         @include body-text;
-        font-size: $font-size-sm;
-        color: $text-muted;
+        font-size: $font-size-lg;
+        font-weight: 600;
+        color: $text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
     }
   }
