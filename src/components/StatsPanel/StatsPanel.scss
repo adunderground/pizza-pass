@@ -1,0 +1,182 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.stats-panel {
+  margin: $spacing-xl 0;
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+  }
+  
+  .stat-card {
+    @include card-style;
+    @include flex-center;
+    gap: $spacing-md;
+    padding: $spacing-xl;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, $primary-color, $secondary-color);
+    }
+    
+    &.pizzas-ordered::before {
+      background: linear-gradient(90deg, $primary-color, $accent-color);
+    }
+    
+    &.cost-per-pizza::before {
+      background: linear-gradient(90deg, $secondary-color, $primary-color);
+    }
+    
+    &.total-savings::before {
+      background: linear-gradient(90deg, $success-color, $accent-color);
+    }
+    
+    &.pass-progress::before {
+      background: linear-gradient(90deg, $accent-color, $secondary-color);
+    }
+    
+    @include fade-in;
+    
+    .stat-icon {
+      font-size: $font-size-3xl;
+      flex-shrink: 0;
+      
+      @include mobile {
+        font-size: $font-size-2xl;
+      }
+    }
+    
+    .stat-content {
+      flex: 1;
+      text-align: center;
+      
+      .stat-value {
+        @include heading-primary;
+        font-size: $font-size-3xl;
+        margin: 0 0 $spacing-xs 0;
+        color: $primary-color;
+        
+        @include mobile {
+          font-size: $font-size-2xl;
+        }
+      }
+      
+      .stat-label {
+        @include heading-secondary;
+        font-size: $font-size-base;
+        margin: 0 0 $spacing-xs 0;
+        color: $text-primary;
+      }
+      
+      .stat-subtitle {
+        @include caption-text;
+        margin: 0;
+        font-size: $font-size-sm;
+      }
+    }
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-xl;
+    }
+  }
+  
+  .progress-section {
+    @include card-style;
+    padding: $spacing-xl;
+    
+    .progress-header {
+      @include flex-between;
+      margin-bottom: $spacing-lg;
+      
+      @include mobile {
+        @include flex-column;
+        gap: $spacing-sm;
+        text-align: center;
+      }
+      
+      h3 {
+        @include heading-secondary;
+        margin: 0;
+        font-size: $font-size-xl;
+      }
+      
+      .progress-text {
+        @include body-text;
+        background: rgba($primary-color, 0.2);
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $border-radius-md;
+        font-weight: 600;
+      }
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: $background-darker;
+      border-radius: $border-radius-lg;
+      overflow: hidden;
+      margin-bottom: $spacing-md;
+      position: relative;
+      
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, $primary-color, $secondary-color);
+        border-radius: $border-radius-lg;
+        transition: width 1s ease-out;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          animation: shimmer 2s infinite;
+        }
+      }
+    }
+    
+    .progress-details {
+      @include flex-between;
+      
+      @include mobile {
+        @include flex-column;
+        gap: $spacing-sm;
+        text-align: center;
+      }
+      
+      span {
+        @include body-text;
+        font-size: $font-size-sm;
+        color: $text-muted;
+      }
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+} 

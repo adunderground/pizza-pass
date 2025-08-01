@@ -1,0 +1,241 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.order-history {
+  margin: $spacing-xl 0;
+  
+  .history-header {
+    @include flex-between;
+    margin-bottom: $spacing-xl;
+    
+    @include mobile {
+      @include flex-column;
+      gap: $spacing-lg;
+      text-align: center;
+    }
+    
+    h2 {
+      @include heading-secondary;
+      margin: 0;
+    }
+    
+    .filter-controls {
+      @include flex-center;
+      gap: $spacing-sm;
+      
+      @include mobile {
+        flex-wrap: wrap;
+      }
+      
+      .filter-btn {
+        @include button-primary;
+        background: $surface-color;
+        color: $text-secondary;
+        border: 1px solid rgba($primary-color, 0.3);
+        
+        &.active {
+          background: $primary-color;
+          color: $text-primary;
+        }
+        
+        &:hover {
+          background: lighten($primary-color, 10%);
+          color: $text-primary;
+        }
+      }
+    }
+  }
+  
+  .orders-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    
+    .no-orders {
+      @include card-style;
+      text-align: center;
+      padding: $spacing-xl;
+      
+      p {
+        @include body-text;
+        font-size: $font-size-lg;
+        margin: 0;
+        opacity: 0.7;
+      }
+    }
+    
+    .order-card {
+      @include card-style;
+      padding: $spacing-lg;
+      position: relative;
+      border-left: 4px solid transparent;
+      
+      &.archie {
+        border-left-color: $primary-color;
+        
+        .person-icon {
+          background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+        }
+      }
+      
+      &.charles {
+        border-left-color: $secondary-color;
+        
+        .person-icon {
+          background: linear-gradient(135deg, $secondary-color, darken($secondary-color, 10%));
+        }
+      }
+      
+      &.correct {
+        border-color: $success-color;
+      }
+      
+      &.incorrect {
+        border-color: $error-color;
+      }
+      
+      .order-header {
+        @include flex-between;
+        margin-bottom: $spacing-md;
+        
+        @include mobile {
+          @include flex-column;
+          gap: $spacing-sm;
+          align-items: flex-start;
+        }
+        
+        .order-person {
+          @include flex-center;
+          gap: $spacing-sm;
+          
+          .person-icon {
+            @include flex-center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: $font-size-xl;
+            box-shadow: $shadow-md;
+            flex-shrink: 0;
+          }
+          
+          .person-info {
+            .person-name {
+              @include heading-secondary;
+              font-size: $font-size-lg;
+              margin: 0 0 $spacing-xs 0;
+            }
+            
+            .order-date {
+              @include caption-text;
+              margin: 0;
+            }
+          }
+        }
+        
+        .order-status {
+          .status-badge {
+            @include body-text;
+            padding: $spacing-xs $spacing-sm;
+            border-radius: $border-radius-sm;
+            font-size: $font-size-xs;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            
+            &.correct {
+              background: rgba($success-color, 0.2);
+              color: $success-color;
+            }
+            
+            &.incorrect {
+              background: rgba($error-color, 0.2);
+              color: $error-color;
+            }
+            
+            &.unknown {
+              background: rgba($text-muted, 0.2);
+              color: $text-muted;
+            }
+          }
+        }
+      }
+      
+      .order-details {
+        .pizza-info {
+          margin-bottom: $spacing-md;
+          
+          .pizza-name {
+            @include heading-secondary;
+            font-size: $font-size-base;
+            margin: 0 0 $spacing-xs 0;
+            color: $primary-color;
+          }
+          
+          .pizza-ingredients {
+            @include body-text;
+            font-size: $font-size-sm;
+            margin: 0;
+            opacity: 0.8;
+            line-height: 1.4;
+          }
+        }
+        
+        .order-meta {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: $spacing-sm;
+          
+          @include mobile {
+            grid-template-columns: 1fr;
+          }
+          
+          .meta-item {
+            @include flex-between;
+            
+            .meta-label {
+              @include caption-text;
+              font-weight: 600;
+            }
+            
+            .meta-value {
+              @include body-text;
+              font-size: $font-size-sm;
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .history-summary {
+    margin-top: $spacing-xl;
+    
+    .summary-stats {
+      @include card-style;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: $spacing-lg;
+      padding: $spacing-lg;
+      
+      @include mobile {
+        grid-template-columns: 1fr;
+        gap: $spacing-md;
+      }
+      
+      .summary-item {
+        @include flex-between;
+        
+        .summary-label {
+          @include body-text;
+          font-weight: 600;
+        }
+        
+        .summary-value {
+          @include heading-secondary;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+} 

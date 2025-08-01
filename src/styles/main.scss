@@ -1,0 +1,95 @@
+// Pizza Pass Tracker - Main Styles
+
+@import 'variables';
+@import 'mixins';
+@import 'base';
+
+// Google Fonts import
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700&family=Tinos:wght@400;700&display=swap');
+
+// Global app styles
+.app {
+  min-height: 100vh;
+  background: $background-dark;
+  color: $text-primary;
+}
+
+// Layout components
+.main-content {
+  padding: $spacing-xl 0;
+  
+  @include mobile {
+    padding: $spacing-lg 0;
+  }
+}
+
+// Footer styles
+.footer {
+  background: $background-darker;
+  border-top: 1px solid rgba($primary-color, 0.2);
+  padding: $spacing-lg 0;
+  margin-top: $spacing-xl;
+  
+  p {
+    @include body-text;
+    text-align: center;
+    margin: 0;
+    opacity: 0.7;
+    font-size: $font-size-sm;
+  }
+}
+
+// Grid system
+.grid {
+  display: grid;
+  gap: $spacing-lg;
+  
+  &.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Animation classes
+.fade-in {
+  @include fade-in;
+}
+
+.pulse {
+  @include pulse-animation;
+}
+
+.slide-in {
+  @include slide-in;
+}
+
+// Custom scrollbar for webkit browsers
+.custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $background-darker;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $surface-color;
+    border-radius: $border-radius-sm;
+    
+    &:hover {
+      background: lighten($surface-color, 10%);
+    }
+  }
+} 
