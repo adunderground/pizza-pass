@@ -1,5 +1,6 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use 'sass:color';
 
 .order-history {
   margin: $spacing-xl 0;
@@ -39,7 +40,7 @@
         }
         
         &:hover {
-          background: lighten($primary-color, 10%);
+          background: color.adjust($primary-color, $lightness: 10%);
           color: $text-primary;
         }
       }
@@ -74,7 +75,7 @@
         border-left-color: $primary-color;
         
         .person-icon {
-          background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+          background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
         }
       }
       
@@ -82,7 +83,7 @@
         border-left-color: $secondary-color;
         
         .person-icon {
-          background: linear-gradient(135deg, $secondary-color, darken($secondary-color, 10%));
+          background: linear-gradient(135deg, $secondary-color, color.adjust($secondary-color, $lightness: -10%));
         }
       }
       

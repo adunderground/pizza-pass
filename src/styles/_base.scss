@@ -1,7 +1,7 @@
 // Pizza Pass Tracker - Base Styles
 
-@import 'variables';
-@import 'mixins';
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Reset and base styles
 * {
@@ -79,7 +79,7 @@ a {
   transition: $transition-fast;
   
   &:hover {
-    color: lighten($primary-color, 10%);
+    color: color.adjust($primary-color, $lightness: 10%);
   }
 }
 
@@ -97,7 +97,7 @@ a {
   border-radius: $border-radius-sm;
   
   &:hover {
-    background: lighten($surface-color, 10%);
+    background: color.adjust($surface-color, $lightness: 10%);
   }
 }
 

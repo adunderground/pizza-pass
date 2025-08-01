@@ -11,9 +11,7 @@ import { getTotalPizzasOrdered } from '../../utils/dataLoader';
 import './StatsPanel.scss';
 
 const StatsPanel = () => {
-  const [pizzasOrdered, setPizzasOrdered] = useState(0);
   const [costPerPizza, setCostPerPizza] = useState(0);
-  const [totalSavings, setTotalSavings] = useState(0);
   const [progress, setProgress] = useState(0);
   const [animatedPizzas, setAnimatedPizzas] = useState(0);
   const [animatedSavings, setAnimatedSavings] = useState(0);
@@ -24,9 +22,7 @@ const StatsPanel = () => {
     const savings = calculateTotalSavings(totalPizzas);
     const passProgress = getPassProgress();
 
-    setPizzasOrdered(totalPizzas);
     setCostPerPizza(costPer);
-    setTotalSavings(savings);
     setProgress(passProgress);
 
     // Animate counters

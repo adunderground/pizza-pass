@@ -1,6 +1,7 @@
 // Pizza Pass Tracker - Mixins
 
-@import 'variables';
+@use 'sass:color';
+@use 'variables' as *;
 
 // Flexbox utilities
 @mixin flex-center {
@@ -62,7 +63,7 @@
 
 // Button styling
 @mixin button-primary {
-  background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+  background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
   color: $text-primary;
   border: none;
   border-radius: $border-radius-md;

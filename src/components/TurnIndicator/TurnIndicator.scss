@@ -1,5 +1,6 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use 'sass:color';
 
 .turn-indicator {
   background: linear-gradient(135deg, $surface-color, $background-darker);
@@ -89,7 +90,7 @@
       border-left: 4px solid $primary-color;
       
       .turn-avatar {
-        background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+        background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
       }
     }
     
@@ -97,7 +98,7 @@
       border-left: 4px solid $secondary-color;
       
       .turn-avatar {
-        background: linear-gradient(135deg, $secondary-color, darken($secondary-color, 10%));
+        background: linear-gradient(135deg, $secondary-color, color.adjust($secondary-color, $lightness: -10%));
       }
     }
     

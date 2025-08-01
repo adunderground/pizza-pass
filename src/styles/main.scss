@@ -1,8 +1,8 @@
 // Pizza Pass Tracker - Main Styles
 
-@import 'variables';
-@import 'mixins';
-@import 'base';
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'base';
 
 // Google Fonts import
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700&family=Tinos:wght@400;700&display=swap');
@@ -89,7 +89,7 @@
     border-radius: $border-radius-sm;
     
     &:hover {
-      background: lighten($surface-color, 10%);
+      background: color.adjust($surface-color, $lightness: 10%);
     }
   }
 } 
