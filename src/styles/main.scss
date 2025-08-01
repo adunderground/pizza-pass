@@ -8,10 +8,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
 
-// Global App Styles - TMNT Brick Wall Theme
+// Global App Styles - TMNT Gradient Theme
 body {
-  background: url('/sprites/brick-wall-background.png') repeat;
-  background-size: 512px 512px;
+  background: linear-gradient(135deg, 
+    #000000 0%, 
+    #111111 25%, 
+    #1a1a1a 50%, 
+    #222222 75%, 
+    #000000 100%
+  );
+  background-size: 200px 200px;
   min-height: 100vh;
   font-family: $font-body;
   color: $text-hero;
@@ -74,6 +80,28 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: $text-secondary;
+  position: relative;
+  
+  // Sewer grate border sprite in center
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 160px;
+    background: url('/sprites/sewer-grate-border.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .footer-content {
+    position: relative;
+    z-index: 1;
+  }
   
   .footer-link {
     color: $turtle-green;
@@ -154,6 +182,15 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 // Animation Utility Classes

@@ -2,7 +2,8 @@
 @use '../../styles/mixins' as *;
 
 .order-history {
-  background: #000000;
+  background: url('/sprites/brick-wall-background.png') repeat;
+  background-size: 512px 512px;
   padding: $spacing-2xl 0;
   position: relative;
   overflow: hidden;

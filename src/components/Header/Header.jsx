@@ -22,7 +22,7 @@ const Header = () => {
       <div className="container">
         <div className="header-content">
                               <div className="logo">
-                      <h1 className="hero-text">&PizzaPass</h1>
+                      <h1 className="hero-text">&Pizza Pass</h1>
                       <img src="/sprites/pizza-cutter-icon.png" alt="Pizza Cutter" className="header-decoration" />
                     </div>
           <div className="day-counter">

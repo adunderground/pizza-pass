@@ -16,15 +16,15 @@
   .header-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: $spacing-md;
+    position: relative;
   }
   
   .logo {
     display: flex;
     align-items: center;
     gap: $spacing-md;
-    flex: 1;
     justify-content: center;
     position: relative;
     
@@ -63,6 +63,11 @@
   }
   
   .day-counter {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
     .day-text {
       font-family: $font-secondary;
       font-size: $font-size-base;

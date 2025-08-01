@@ -68,14 +68,20 @@
                     z-index: 1;
                     
                     .stat-sprite {
-                      width: 48px;
-                      height: 48px;
+                      width: 58px;
+                      height: 58px;
                       filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
                       transition: all $transition-normal;
                       
                       &:hover {
                         transform: scale(1.1);
                         filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.7));
+                      }
+                      
+                      // Special sizing for Krang's Brain sprite
+                      &[src*="krang-brain"] {
+                        width: 130px;
+                        height: 100px;
                       }
                     }
                   }
@@ -148,8 +154,8 @@
       
       .progress-fill {
         height: 100%;
-        background: url('/sprites/progress-bar-fill.png') repeat-x;
-        background-size: auto 100%;
+        background: url('/sprites/pizza-box-icon.png') repeat-x;
+        background-size: 20px 100%;
         border-radius: $border-radius-lg;
         transition: width 0.5s ease-in-out;
         position: relative;
@@ -162,7 +168,7 @@
           right: 0;
           bottom: 0;
           background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
-          animation: animate-spin 2s linear infinite;
+          animation: shimmer 2s ease-in-out infinite;
         }
       }
     }
@@ -196,7 +202,10 @@
         padding: $spacing-md;
         
         .stat-icon {
-          font-size: 1.5rem;
+          .stat-sprite {
+            width: 38px; // 20% bigger than 32px (original mobile size)
+            height: 38px;
+          }
         }
         
         .stat-content {

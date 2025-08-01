@@ -1,6 +1,6 @@
 # 🍕 &PizzaPass
 
-A bold, modern React SPA to track the &Pizza Pass deal between Archie and Charles, calculating savings in real-time with a striking, high-contrast interface inspired by STFU Agency's bold design aesthetic.
+A **Teenage Mutant Ninja Turtles 80s/90s themed** React SPA to track the &Pizza Pass deal between Archie and Charles, featuring AI-generated sprites, sophisticated progress effects, and a dark brick wall aesthetic.
 
 ## 🎯 Project Overview
 
@@ -14,31 +14,34 @@ A bold, modern React SPA to track the &Pizza Pass deal between Archie and Charle
 
 ### 🎯 Turn Rotation System
 - Automatically determines whose turn it is based on current date
-- Bold visual indicator of current person's turn
+- **TMNT-themed avatars**: 🐢 Archie (Turtle) vs 🥷 Charles (Ninja)
+- Bold visual indicator with neon yellow glow for active person
 - Rotation pattern: Archie → Charles → repeat (alternating daily)
 - Handles skipped days (price per pizza stays same)
 
 ### 📊 Pizza Tracking Dashboard
+- **AI-Generated TMNT Sprites**: Shredder's Helmet (Cost), Krang's Brain (Savings), Pizza Box (Orders), April's Camera (Progress)
 - Display total pizzas ordered to date
 - Show current cost per pizza ($39.99 ÷ pizzas ordered)
 - Calculate total savings vs regular pricing
-- Progress indicator for the 30-day period
+- **Sophisticated Progress Effects**: Multi-stage pizza slices with masks and gradients
 
 ### 📋 Order History
 - List of all pizza orders with dates
-- Location-based person identification:
-  - **Archie**: "Brookland, 666 Monroe Street NE, Washington, DC 20017"
-  - **Charles**: "Reston, 1826 Library Street, Reston, VA 20190"
+- **Brick Wall Background**: Authentic TMNT sewer aesthetic
+- Location-based person identification (zip codes hidden for privacy):
+  - **Archie**: "Brookland, 666 Monroe Street NE, Washington, DC"
+  - **Charles**: "Reston, 1826 Library Street, Reston, VA"
 - Date-based turn validation (primary method)
 - Visual distinction between each person's orders
 
 ### 🎨 Design Features
-- **Theme**: BOLD and HIGH-CONTRAST with pure black background
-- **Typography**: Chivo (headlines) + Tinos (body) with heavy weights
-- **Colors**: Electric red, green, and yellow on pure black
-- **Responsive**: Works on mobile/desktop
-- **Animations**: Smooth transitions and hover effects
-- **Bold Aesthetic**: Inspired by STFU Agency's striking design
+- **Theme**: **TMNT 80s/90s Cowabunga Pizza Power** with dark brick wall background
+- **Typography**: Bungee, Staatliches, Orbitron, Rajdhani, Chivo, Tinos
+- **Colors**: Turtle Green, Slime Lime, Neon Yellow, Comic Red, Pizza Orange
+- **Responsive**: Works on mobile/desktop with conditional layouts
+- **Animations**: Shimmer effects, hover glows, spin animations
+- **AI-Generated Sprites**: All icons and decorative elements created with OpenAI GPT Image MCP
 
 ## 🚀 Getting Started
 
@@ -70,9 +73,10 @@ npm run dev
 
 - **Frontend**: React 18+ with Vite
 - **Styling**: SCSS with CSS Modules
-- **Fonts**: Google Fonts (Chivo, Tinos)
+- **Fonts**: Google Fonts (Bungee, Staatliches, Orbitron, Rajdhani, Chivo, Tinos)
 - **Date Handling**: date-fns
 - **Build Tool**: Vite
+- **AI Integration**: OpenAI GPT Image MCP for sprite generation
 - **No External UI Libraries**: Pure React + SCSS implementation
 
 ## 📁 Project Structure
@@ -81,20 +85,27 @@ npm run dev
 src/
 ├── components/          # React components
 │   ├── Header/         # App header with &PizzaPass logo
-│   ├── TurnIndicator/  # Shows whose turn today
-│   ├── StatsPanel/     # Cost calculations & progress
-│   └── OrderHistory/   # Timeline of orders
+│   ├── PizzaCentral/   # Central layout with pizza and avatars
+│   ├── StatsPanel/     # Cost calculations & progress with TMNT sprites
+│   └── OrderHistory/   # Timeline of orders with brick wall background
 ├── styles/             # SCSS styles
-│   ├── _variables.scss # Bold design system variables
+│   ├── _variables.scss # TMNT design system variables
 │   ├── _mixins.scss    # Reusable style patterns
 │   ├── _base.scss      # Reset & typography
-│   └── main.scss       # Main styles
+│   └── main.scss       # Main styles with brick wall background
 ├── utils/              # Utility functions
 │   ├── pizzaUtils.js   # Business logic & calculations
 │   └── dataLoader.js   # Data loading & processing
 ├── data/               # Static data
 │   └── pizza-data.json # Pizza order data
 └── App.jsx            # Main app component
+
+public/
+└── sprites/           # AI-generated TMNT sprites
+    ├── pizza-slice-stage-*.png    # Progressive pizza slices
+    ├── *-icon.png                 # TMNT-themed stats icons
+    ├── brick-wall-background.png  # Main background
+    └── *.png                      # Decorative elements
 ```
 
 ## 🎯 Business Logic
@@ -126,35 +137,44 @@ From `pizza-data.json`:
 
 ## 🎨 Design System
 
-### Colors
-- **Primary**: Bold red (#ff0000)
-- **Secondary**: Electric green (#00ff00)
-- **Accent**: Bright yellow (#ffff00)
-- **Background**: Pure black (#000000)
+### Colors (TMNT Theme)
+- **Turtle Green**: #00a651
+- **Slime Lime**: #39ff14
+- **Neon Yellow**: #ffff00
+- **Comic Red**: #ff0000
+- **Pizza Orange**: #ff6b35
+- **Background**: Pure black (#000000) with brick wall pattern
 - **Surface**: Very dark gray (#111111)
 
 ### Typography
-- **Headlines**: Chivo (Bold, 600, 700, 900)
-- **Body**: Tinos (Regular, 400, 700)
+- **Hero**: Bungee (Bold, 900)
+- **Primary**: Staatliches (Regular, 400)
+- **Secondary**: Orbitron (Medium, 500)
+- **Body**: Rajdhani (Regular, 400)
 
-### Spacing
-- Consistent spacing scale (xs, sm, md, lg, xl, 2xl, 3xl)
-- Responsive breakpoints for mobile/desktop
+### Sprites & Icons
+- **Stats Icons**: Shredder's Helmet, Krang's Brain, Pizza Box, April's Camera
+- **Pizza Slices**: 5 progressive stages with melted cheese
+- **Decorative**: Ninja stars, pizza cutters, turtle shell patterns
+- **Background**: Brick wall texture for authentic TMNT aesthetic
 
 ## 🚀 Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
 ## 🎯 Success Criteria
 
 - ✅ Accurately tracks pizza orders and costs
 - ✅ Correctly rotates turns based on dates
 - ✅ Provides clear savings visualization
-- ✅ Looks bold and impactful
-- ✅ Fun to use and show friends
+- ✅ **TMNT 80s/90s aesthetic with AI-generated sprites**
+- ✅ **Sophisticated progress effects with masks and gradients**
+- ✅ **Brick wall background for authentic atmosphere**
 - ✅ Responsive design works on mobile/desktop
+- ✅ **Fun and nostalgic user experience**
 
 ## 🔮 Future Enhancements (V2)
 
@@ -162,7 +182,8 @@ From `pizza-data.json`:
 - Browser extension for one-click &Pizza account sync
 - Email parsing automation for order confirmations
 - Enhanced analytics and insights
+- **More TMNT sprite variations and animations**
 
 ---
 
-**Built with ❤️ and 🍕 for Archie & Charles**
+**Cowabunga'd with 🍕 by ad_underground**
