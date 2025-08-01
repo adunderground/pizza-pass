@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header, OrderHistory } from './components';
 import PizzaCentral from './components/PizzaCentral/PizzaCentral';
 import './styles/main.scss';
 
 function App() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
   return (
     <div className="pizza-app-layout">
       <div className="app-container">
-        <Header />
+        {!isMobile && <Header />}
         <main className="main-content">
           <PizzaCentral />
           <OrderHistory />

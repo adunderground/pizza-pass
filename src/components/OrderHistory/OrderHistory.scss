@@ -164,6 +164,7 @@
           flex: 1;
           
           .person-name {
+            z-index: 100;
             font-family: $font-primary;
             font-size: $font-size-xl;
             font-weight: 700;

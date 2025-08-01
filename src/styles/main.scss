@@ -30,6 +30,10 @@ body {
   padding: $spacing-lg;
   background: #000000;
   
+  @media (max-width: 768px) {
+    padding: $spacing-md;
+  }
+  
   .app-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -37,12 +41,21 @@ body {
     grid-template-rows: auto 1fr auto;
     gap: $spacing-2xl;
     min-height: calc(100vh - #{$spacing-2xl});
+    
+    @media (max-width: 768px) {
+      gap: $spacing-lg;
+      min-height: calc(100vh - #{$spacing-lg});
+    }
   }
 }
 
 // Main Content
 .main-content {
   padding: $spacing-xl 0;
+  
+  @media (max-width: 768px) {
+    padding: $spacing-md 0;
+  }
 }
 
 // Grid Layout

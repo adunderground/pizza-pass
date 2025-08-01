@@ -2,6 +2,10 @@
 
 A **Teenage Mutant Ninja Turtles 80s/90s themed** React SPA to track the &Pizza Pass deal between Archie and Charles, featuring AI-generated sprites, sophisticated progress effects, and a dark brick wall aesthetic.
 
+## 🌐 Live App
+
+**🎯 Production URL:** https://pizzapass.surge.sh
+
 ## 🎯 Project Overview
 
 **&Pizza Pass Deal**: 30 pizzas for 30 days, $39.99 total (July 21 - August 21, 2025)

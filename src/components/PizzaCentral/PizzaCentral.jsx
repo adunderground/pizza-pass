@@ -5,10 +5,10 @@ import './PizzaCentral.scss';
 
 const PizzaCentral = () => {
   const [currentTurn, setCurrentTurn] = useState(null);
-  const [passDay, setPassDay] = useState(null);
   const [progressPercentage, setProgressPercentage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [pizzaStage, setPizzaStage] = useState(1);
+  const [passDay, setPassDay] = useState(null);
 
   useEffect(() => {
     const updateTurnInfo = () => {
@@ -24,9 +24,9 @@ const PizzaCentral = () => {
       else if (progress > 20) stage = 2;
       
       setCurrentTurn(turn);
-      setPassDay(day);
       setProgressPercentage(progress);
       setPizzaStage(stage);
+      setPassDay(day);
     };
 
     const checkMobile = () => {
@@ -51,29 +51,42 @@ const PizzaCentral = () => {
   if (isMobile) {
     return (
       <div className="pizza-central-mobile">
+        {/* Title */}
+        <div className="mobile-title">
+          <h1 className="hero-text">&Pizza Pass</h1>
+        </div>
+        
+        {/* Day */}
+        <div className="mobile-day">
+          <span className="day-text">Day {passDay} of 30</span>
+        </div>
+        
+        {/* Turn Indicator */}
         <div className="mobile-turn-indicator">
           <span className="turn-text">{currentTurn}'s Turn</span>
         </div>
         
-        <div className="center-section">
-          <div className="pizza-slice-container">
-            <div className="pizza-slice">
-              <img 
-                src={`/sprites/pizza-slice-stage-${pizzaStage}.png`}
-                alt={`Pizza slice stage ${pizzaStage}`}
-                className="pizza-sprite"
-              />
-              <div className="progress-overlay">
-                <div 
-                  className="progress-fill"
-                  style={{ height: `${progressPercentage}%` }}
-                ></div>
-              </div>
-            </div>
+        {/* Pizza Stats */}
+        <div className="mobile-stats">
+          <StatsPanel />
+        </div>
+        
+        {/* Small Avatars */}
+        <div className="mobile-avatars">
+          <div className={`mobile-avatar archie ${currentTurn === 'Archie' ? 'active' : ''}`}>
+            <img src="/archie_c.jpg" alt="Archie" className="avatar-image" />
+            <span className="person-name">Archie</span>
+            {currentTurn === 'Archie' && (
+              <img src="/sprites/ninja-star-decoration.png" alt="Ninja Star" className="ninja-star" />
+            )}
           </div>
           
-          <div className="stats-group">
-            <StatsPanel />
+          <div className={`mobile-avatar charles ${currentTurn === 'Charles' ? 'active' : ''}`}>
+            <img src="/charles_c.jpg" alt="Charles" className="avatar-image" />
+            <span className="person-name">Charles</span>
+            {currentTurn === 'Charles' && (
+              <img src="/sprites/ninja-star-decoration.png" alt="Ninja Star" className="ninja-star" />
+            )}
           </div>
         </div>
       </div>
@@ -84,7 +97,7 @@ const PizzaCentral = () => {
     <div className="pizza-central-layout">
       <div className="left-circle">
         <div className={`person-circle archie ${currentTurn === 'Archie' ? 'active' : ''}`}>
-          <span className="avatar-emoji">🐢</span>
+          <img src="/archie_c.jpg" alt="Archie" className="avatar-image" />
           <span className="person-name">Archie</span>
           {currentTurn === 'Archie' && (
             <>
@@ -96,22 +109,6 @@ const PizzaCentral = () => {
       </div>
       
       <div className="center-section">
-        <div className="pizza-slice-container">
-          <div className="pizza-slice">
-            <img 
-              src={`/sprites/pizza-slice-stage-${pizzaStage}.png`}
-              alt={`Pizza slice stage ${pizzaStage}`}
-              className="pizza-sprite"
-            />
-            <div className="progress-overlay">
-              <div 
-                className="progress-fill"
-                style={{ height: `${progressPercentage}%` }}
-              ></div>
-            </div>
-          </div>
-        </div>
-        
         <div className="stats-group">
           <StatsPanel />
         </div>
@@ -119,7 +116,7 @@ const PizzaCentral = () => {
       
       <div className="right-circle">
         <div className={`person-circle charles ${currentTurn === 'Charles' ? 'active' : ''}`}>
-          <span className="avatar-emoji">🥷</span>
+          <img src="/charles_c.jpg" alt="Charles" className="avatar-image" />
           <span className="person-name">Charles</span>
           {currentTurn === 'Charles' && (
             <>
