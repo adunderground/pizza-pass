@@ -1,6 +1,48 @@
 {
   "orders": [
     {
+      "order_date": "August 06, 2025",
+      "order_number": "37194237583818757",
+      "location": "Dulles, 22025 Dulles Retail Plaza Suite #100, Dulles, VA 20166",
+      "pizza_name": "DIRTY BIRD",
+      "ingredients": "Traditional, Parm Romano Sauce, Buffalo Sauce, Shredded Mozzarella, Jalapeno, Chicken, Blue Cheese, Ranch Dressing, Buffalo Sauce Finish"
+    },
+    {
+      "order_date": "August 05, 2025",
+      "order_number": "37173608318910469",
+      "location": "Reston, 1826 Library Street, Reston, VA 20190",
+      "pizza_name": "CRAFT YOUR OWN",
+      "ingredients": "Traditional, Classic Tomato Sauce, Additional Toppings, Basil, Fresh Mozzarella, Bell Peppers, Black Olives, Pepperoni, Drizzles, Truffle Oil, Basil Pesto Finish"
+    },
+    {
+      "order_date": "August 04, 2025",
+      "order_number": "37152979053962181",
+      "location": "Brookland, 666 Monroe Street NE, Washington, DC 20017",
+      "pizza_name": "CBR",
+      "ingredients": "Traditional, Parm Romano Sauce, Shredded Mozzarella, Grilled Onions, Chicken, Bacon, Ranch Dressing"
+    },
+    {
+      "order_date": "August 03, 2025",
+      "order_number": "37132349789013893",
+      "location": "Reston, 1826 Library Street, Reston, VA 20190",
+      "pizza_name": "AMERICAN HONEY",
+      "ingredients": "Traditional, Spicy Tomato, Fresh Mozzarella, Pepperoni, Goat Cheese, Hot Honey, Red Pepper Flakes, Arugula"
+    },
+    {
+      "order_date": "August 02, 2025",
+      "order_number": "37111720524065605",
+      "location": "Brookland, 666 Monroe Street NE, Washington, DC 20017",
+      "pizza_name": "PINEAPPLE JAK'D",
+      "ingredients": "Traditional, Classic Tomato Sauce, Shredded Mozzarella, Pineapple, Jalapenos, Bacon, Hot Honey"
+    },
+    {
+      "order_date": "August 01, 2025",
+      "order_number": "37091091259117317",
+      "location": "Reston, 1826 Library Street, Reston, VA 20190",
+      "pizza_name": "AMERICAN HONEY",
+      "ingredients": "Traditional, Spicy Tomato, Fresh Mozzarella, Pepperoni, Goat Cheese, Hot Honey, Red Pepper Flakes, Arugula"
+    },
+    {
       "order_date": "July 31, 2025",
       "order_number": "37057346235760648",
       "location": "Brookland, 666 Monroe Street NE, Washington, DC 20017",
@@ -52,9 +94,9 @@
   ],
   "metadata": {
     "extraction_date": "2025-01-27",
-    "total_orders": 7,
-    "date_range": "July 22-31, 2025",
-    "locations": ["Brookland, Washington, DC", "Reston, VA"],
-    "pizza_types": ["CRAFT YOUR OWN", "MAVERICK", "THE FARMERS OTHER DAUGHTER", "LIL RONI"]
+    "total_orders": 13,
+    "date_range": "July 22-August 06, 2025",
+    "locations": ["Brookland, Washington, DC", "Reston, VA", "Dulles, VA"],
+    "pizza_types": ["CRAFT YOUR OWN", "MAVERICK", "THE FARMERS OTHER DAUGHTER", "LIL RONI", "DIRTY BIRD", "CBR", "AMERICAN HONEY", "PINEAPPLE JAK'D"]
   }
 }
