@@ -36,7 +36,7 @@ const StatsPanel = () => {
         <div className="stats-grid grid grid-cols-2">
           <div className="stat-card hover-glow">
             <div className="stat-icon">
-              <img src="/sprites/pizza-box-icon.png" alt="Pizza Box" className="stat-sprite" />
+              <img src="/sprites/pizza-box-icon.png" alt="Pizza Box" className="stat-sprite" loading="lazy" width="58" height="58" />
             </div>
             <div className="stat-content">
               <div className="stat-value retro-number">{pizzasOrdered}</div>
@@ -46,7 +46,7 @@ const StatsPanel = () => {
           
           <div className="stat-card hover-glow">
             <div className="stat-icon">
-              <img src="/sprites/shredder-helmet-icon.png" alt="Shredder's Helmet" className="stat-sprite" />
+              <img src="/sprites/shredder-helmet-icon.png" alt="Shredder's Helmet" className="stat-sprite" loading="lazy" width="58" height="58" />
             </div>
             <div className="stat-content">
               <div className="stat-value retro-number">${costPerPizza.toFixed(2)}</div>
@@ -56,7 +56,7 @@ const StatsPanel = () => {
           
           <div className="stat-card hover-glow">
             <div className="stat-icon">
-              <img src="/sprites/krang-brain-icon.png" alt="Krang's Brain" className="stat-sprite" />
+              <img src="/sprites/krang-brain-icon.png" alt="Krang's Brain" className="stat-sprite" loading="lazy" width="130" height="100" />
             </div>
             <div className="stat-content">
               <div className="stat-value retro-number">${totalSavings.toFixed(2)}</div>
@@ -66,7 +66,7 @@ const StatsPanel = () => {
           
           <div className="stat-card hover-glow">
             <div className="stat-icon">
-              <img src="/sprites/april-camera-icon.png" alt="April's Camera" className="stat-sprite" />
+              <img src="/sprites/april-camera-icon.png" alt="April's Camera" className="stat-sprite" loading="lazy" width="58" height="58" />
             </div>
             <div className="stat-content">
               <div className="stat-value retro-number">{Math.round(passProgress)}%</div>

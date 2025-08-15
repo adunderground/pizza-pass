@@ -50,7 +50,7 @@ const PizzaCentral = () => {
 
   if (isMobile) {
     return (
-      <div className="pizza-central-mobile">
+      <div className={`pizza-central-mobile stage-${pizzaStage}`}>
         {/* Title */}
         <div className="mobile-title">
           <h1 className="hero-text">&Pizza Pass</h1>
@@ -60,7 +60,21 @@ const PizzaCentral = () => {
         <div className="mobile-day">
           <span className="day-text">Day {passDay} of 30</span>
         </div>
-        
+
+        {/* Current avatar between day and turn + divider pizza slice */}
+        <div className="mobile-current">
+          <div className={`mobile-current-avatar ${currentTurn?.toLowerCase()}`}>
+            <div className="avatar-frame">
+              {currentTurn === 'Archie' ? (
+                <img src="/archie_c.jpg" alt="Archie" className="avatar-image" loading="eager" width="80" height="80" />
+              ) : (
+                <img src="/charles_c.jpg" alt="Charles" className="avatar-image" loading="eager" width="80" height="80" />
+              )}
+            </div>
+            <span className="person-name">{currentTurn}</span>
+          </div>
+        </div>
+
         {/* Turn Indicator */}
         <div className="mobile-turn-indicator">
           <span className="turn-text">{currentTurn}'s Turn</span>
@@ -74,7 +88,9 @@ const PizzaCentral = () => {
         {/* Small Avatars */}
         <div className="mobile-avatars">
           <div className={`mobile-avatar archie ${currentTurn === 'Archie' ? 'active' : ''}`}>
-            <img src="/archie_c.jpg" alt="Archie" className="avatar-image" />
+            <div className="avatar-frame">
+              <img src="/archie_c.jpg" alt="Archie" className="avatar-image" loading="lazy" width="80" height="80" />
+            </div>
             <span className="person-name">Archie</span>
             {currentTurn === 'Archie' && (
               <img src="/sprites/ninja-star-decoration.png" alt="Ninja Star" className="ninja-star" />
@@ -82,7 +98,9 @@ const PizzaCentral = () => {
           </div>
           
           <div className={`mobile-avatar charles ${currentTurn === 'Charles' ? 'active' : ''}`}>
-            <img src="/charles_c.jpg" alt="Charles" className="avatar-image" />
+            <div className="avatar-frame">
+              <img src="/charles_c.jpg" alt="Charles" className="avatar-image" loading="lazy" width="80" height="80" />
+            </div>
             <span className="person-name">Charles</span>
             {currentTurn === 'Charles' && (
               <img src="/sprites/ninja-star-decoration.png" alt="Ninja Star" className="ninja-star" />
@@ -97,7 +115,9 @@ const PizzaCentral = () => {
     <div className="pizza-central-layout">
       <div className="left-circle">
         <div className={`person-circle archie ${currentTurn === 'Archie' ? 'active' : ''}`}>
-          <img src="/archie_c.jpg" alt="Archie" className="avatar-image" />
+          <div className="avatar-frame">
+            <img src="/archie_c.jpg" alt="Archie" className="avatar-image" loading="eager" width="200" height="200" />
+          </div>
           <span className="person-name">Archie</span>
           {currentTurn === 'Archie' && (
             <>
@@ -116,7 +136,9 @@ const PizzaCentral = () => {
       
       <div className="right-circle">
         <div className={`person-circle charles ${currentTurn === 'Charles' ? 'active' : ''}`}>
-          <img src="/charles_c.jpg" alt="Charles" className="avatar-image" />
+          <div className="avatar-frame">
+            <img src="/charles_c.jpg" alt="Charles" className="avatar-image" loading="eager" width="200" height="200" />
+          </div>
           <span className="person-name">Charles</span>
           {currentTurn === 'Charles' && (
             <>

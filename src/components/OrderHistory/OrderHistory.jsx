@@ -85,7 +85,7 @@ const OrderHistory = () => {
               >
                 <div className="order-header">
                   <div className="person-avatar">
-                    <span className="avatar-emoji">{getAvatar(order.actualPerson)}</span>
+                    <span className="avatar-emoji" aria-hidden="true">{getAvatar(order.actualPerson)}</span>
                   </div>
                   <div className="order-info">
                     <h3 className="person-name">{order.actualPerson}</h3>

@@ -67,6 +67,9 @@ export const getPersonByLocation = (location) => {
     return 'Archie';
   } else if (location.includes('Reston')) {
     return 'Charles';
+  } else if (location.includes('Dulles')) {
+    // All orders from Dulles are Archie's orders
+    return 'Archie';
   }
   return null;
 };
