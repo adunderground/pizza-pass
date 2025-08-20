@@ -1,6 +1,20 @@
 {
   "orders": [
     {
+      "order_date": "August 18, 2025",
+      "order_number": "37478782660673547",
+      "location": "Brookland, 666 Monroe Street NE, Washington, DC 20017",
+      "pizza_name": "CBR",
+      "ingredients": "Traditional, Parm Romano Sauce, SHREDDED MOZZARELLA, GRILLED ONION, CHICKEN, BACON, RANCH DRESSING"
+    },
+    {
+      "order_date": "August 16, 2025",
+      "order_number": "37428680255995907",
+      "location": "Brookland, 666 Monroe Street NE, Washington, DC 20017",
+      "pizza_name": "CRAFT YOUR OWN",
+      "ingredients": "Traditional, Classic Tomato Sauce, Additional Toppings, Spinach, Shredded Mozzarella, Bell Peppers, Italian Sausage, Pepperoni, Finishes, Arugula, Drizzles, Ranch Dressing, Mambo Sauce"
+    },
+    {
       "order_date": "August 13, 2025",
       "order_number": "37363823028092929",
       "location": "Reston, 1826 Library Street, Reston, VA 20190",
@@ -136,9 +150,9 @@
   ],
   "metadata": {
     "extraction_date": "2025-01-27",
-    "total_orders": 13,
-    "date_range": "July 22-August 06, 2025",
+    "total_orders": 15,
+    "date_range": "July 22-August 18, 2025",
     "locations": ["Brookland, Washington, DC", "Reston, VA", "Dulles, VA"],
-    "pizza_types": ["CRAFT YOUR OWN", "MAVERICK", "THE FARMERS OTHER DAUGHTER", "LIL RONI", "DIRTY BIRD", "CBR", "AMERICAN HONEY", "PINEAPPLE JAK'D"]
+    "pizza_types": ["CRAFT YOUR OWN", "MAVERICK", "THE FARMERS OTHER DAUGHTER", "LIL RONI", "DIRTY BIRD", "CBR", "AMERICAN HONEY", "PINEAPPLE JAK'D", "MAMBO NO. FIRE"]
   }
 }
