@@ -1,13 +1,6 @@
 {
   "orders": [
     {
-      "order_date": "August 15, 2025",
-      "order_number": "37410555225456642",
-      "location": "Reston, 1826 Library Street, Reston, VA 20190",
-      "pizza_name": "CRAFT YOUR OWN",
-      "ingredients": "Traditional, Spicy Tomato Sauce, Additional Toppings, Basil, Fresh Mozzarella, Shredded Mozzarella, Bell Peppers, Mushroom, Grilled Onion, Black Olives, Finishes, Pickled Red Onion, Red Pepper Flakes, Banana Pepper, Drizzles, Truffle Oil"
-    },
-    {
       "order_date": "August 18, 2025",
       "order_number": "37478782660673547",
       "location": "Brookland, 666 Monroe Street NE, Washington, DC 20017",
@@ -20,6 +13,13 @@
       "location": "Brookland, 666 Monroe Street NE, Washington, DC 20017",
       "pizza_name": "CRAFT YOUR OWN",
       "ingredients": "Traditional, Classic Tomato Sauce, Additional Toppings, Spinach, Shredded Mozzarella, Bell Peppers, Italian Sausage, Pepperoni, Finishes, Arugula, Drizzles, Ranch Dressing, Mambo Sauce"
+    },
+    {
+      "order_date": "August 15, 2025",
+      "order_number": "37410555225456642",
+      "location": "Reston, 1826 Library Street, Reston, VA 20190",
+      "pizza_name": "CRAFT YOUR OWN",
+      "ingredients": "Traditional, Spicy Tomato Sauce, Additional Toppings, Basil, Fresh Mozzarella, Shredded Mozzarella, Bell Peppers, Mushroom, Grilled Onion, Black Olives, Finishes, Pickled Red Onion, Red Pepper Flakes, Banana Pepper, Drizzles, Truffle Oil"
     },
     {
       "order_date": "August 13, 2025",
@@ -131,7 +131,7 @@
       "order_number": "37173608318910461",
       "location": "Reston, 1826 Library Street, Reston, VA 20190",
       "pizza_name": "LIL RONI",
-      "ingredients": "Classic Tomato, Shredded Mozzarella, Double Pepperoni"
+      "ingredients": "Classic Tomato, Fresh Mozzarella, Double Pepperoni"
     },
     {
       "order_date": "July 25, 2025",
@@ -157,9 +157,9 @@
   ],
   "metadata": {
     "extraction_date": "2025-01-27",
-    "total_orders": 16,
+    "total_orders": 22,
     "date_range": "July 22-August 18, 2025",
     "locations": ["Brookland, Washington, DC", "Reston, VA", "Dulles, VA"],
-    "pizza_types": ["CRAFT YOUR OWN", "MAVERICK", "THE FARMERS OTHER DAUGHTER", "LIL RONI", "DIRTY BIRD", "CBR", "AMERICAN HONEY", "PINEAPPLE JAK'D", "MAMBO NO. FIRE"]
+    "pizza_types": ["CRAFT YOUR OWN", "MAVERICK", "THE FARMERS OTHER DAUGHTER", "LIL RONI", "DIRTY BIRD", "CBR", "AMERICAN HONEY", "PINEAPPLE JAK'D", "MAMBO NO. FIRE", "NEW G", "MOONSTRUCK"]
   }
 }
