@@ -8,6 +8,13 @@
       "ingredients": "Traditional, Parm Romano Sauce, SHREDDED MOZZARELLA, GRILLED ONION, CHICKEN, BACON, RANCH DRESSING"
     },
     {
+      "order_date": "August 14, 2025",
+      "order_number": "37384534702686218",
+      "location": "Dulles 28, 22025 Dulles Retail Plaza Suite #100, Dulles, VA 20166",
+      "pizza_name": "MOONSTRUCK",
+      "ingredients": "Traditional, No Sauce, Fresh Mozzarella, Grilled Onion, Mushroom x2, Goat Cheese, Fig Balsamic, Truffle Oil Drizzle, Additional Toppings, Chicken"
+    },
+    {
       "order_date": "August 16, 2025",
       "order_number": "37428680255995907",
       "location": "Brookland, 666 Monroe Street NE, Washington, DC 20017",
@@ -157,7 +164,7 @@
   ],
   "metadata": {
     "extraction_date": "2025-01-27",
-    "total_orders": 22,
+    "total_orders": 23,
     "date_range": "July 22-August 18, 2025",
     "locations": ["Brookland, Washington, DC", "Reston, VA", "Dulles, VA"],
     "pizza_types": ["CRAFT YOUR OWN", "MAVERICK", "THE FARMERS OTHER DAUGHTER", "LIL RONI", "DIRTY BIRD", "CBR", "AMERICAN HONEY", "PINEAPPLE JAK'D", "MAMBO NO. FIRE", "NEW G", "MOONSTRUCK"]
